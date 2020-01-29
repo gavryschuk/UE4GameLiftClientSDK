@@ -29,6 +29,11 @@
       "Name": "CognitoIdentity",
       "Type": "Runtime",
       "LoadingPhase": "PreDefault"
+    },
+    {
+      "Name": "AWSLambda",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
     }
   ]
 }
