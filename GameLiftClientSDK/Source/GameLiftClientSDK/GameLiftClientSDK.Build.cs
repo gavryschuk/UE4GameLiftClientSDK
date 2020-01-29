@@ -11,8 +11,8 @@ public class GameLiftClientSDK : ModuleRules
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore" });
 		
-		PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
-        	PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
+		PublicIncludePaths.AddRange(new string[] {"GameLiftClientSDK/Public"});
+		PrivateIncludePaths.AddRange(new string[] {"GameLiftClientSDK/Private"});
 
         string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));
         string ThirdPartyPath = System.IO.Path.Combine(BaseDirectory, "ThirdParty", "GameLiftClientSDK", Target.Platform.ToString());
@@ -20,7 +20,7 @@ public class GameLiftClientSDK : ModuleRules
 		
 		if (bIsThirdPartyPathValid)
 		{
-			PublicDefinitions.Add("WITH_GAMELIFTCLIENTSDK=1");
+			Definitions.Add("WITH_GAMELIFTCLIENTSDK=1");
 			PublicLibraryPaths.Add(ThirdPartyPath);
 
 			string GameLiftLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-gamelift.lib");			
@@ -37,7 +37,7 @@ public class GameLiftClientSDK : ModuleRules
 			if(File.Exists(GameLiftDLLFile))
 			{
                 PublicDelayLoadDLLs.Add("aws-cpp-sdk-gamelift.dll");
-                RuntimeDependencies.Add(GameLiftDLLFile);
+                RuntimeDependencies.Add(new RuntimeDependency(GameLiftDLLFile));
 			}
 			else
 			{
@@ -56,7 +56,7 @@ public class GameLiftClientSDK : ModuleRules
 		}
 		else
 		{
-			PublicDefinitions.Add("WITH_GAMELIFTCLIENTSDK=0");
+			Definitions.Add("WITH_GAMELIFTCLIENTSDK=0");
 		}
 	}
 }

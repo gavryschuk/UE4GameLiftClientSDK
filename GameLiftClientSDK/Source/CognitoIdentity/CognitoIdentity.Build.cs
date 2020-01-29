@@ -5,13 +5,10 @@ public class CognitoIdentity : ModuleRules
 {
 	public CognitoIdentity(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
-		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
+		PrivateIncludePaths.AddRange(new string[] { "CognitoIdentity/Private" });
+		PublicIncludePaths.AddRange(new string[] { "CognitoIdentity/Public" });
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects" });
-		
-		// This is required to fix a warning for Unreal Engine 4.21 and later
-        	PrivatePCHHeaderFile = "Private/CognitoIdentityPrivatePCH.h";
 
 		string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));
         string ThirdPartyPath = System.IO.Path.Combine(BaseDirectory, "ThirdParty", "GameLiftClientSDK", Target.Platform.ToString());
@@ -35,7 +32,7 @@ public class CognitoIdentity : ModuleRules
 			if (File.Exists(CognitoDLLFile))
 			{
                 PublicDelayLoadDLLs.Add("aws-cpp-sdk-cognito-identity.dll");
-                RuntimeDependencies.Add(CognitoDLLFile);
+                RuntimeDependencies.Add(new RuntimeDependency(CognitoDLLFile));
 			}
 			else
 			{
