@@ -9,7 +9,7 @@ public class GameLiftClientSDK : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore", "AWSLambda" });
 
         PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));

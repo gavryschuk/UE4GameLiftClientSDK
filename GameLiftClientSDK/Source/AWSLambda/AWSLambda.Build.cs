@@ -8,7 +8,7 @@ public class AWSLambda : ModuleRules
 		PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
 		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "GameLiftClientSDK" });
 		
 		// This is required to fix a warning for Unreal Engine 4.21 and later
         PrivatePCHHeaderFile = "Private/AWSLambdaPrivatePCH.h";
