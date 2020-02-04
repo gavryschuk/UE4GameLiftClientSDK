@@ -37,8 +37,7 @@ namespace Lambda
 namespace Model
 {
   /**
-   * <p>Contains a list of AWS Lambda function configurations (see
-   * <a>FunctionConfiguration</a>.</p><p><h3>See Also:</h3>   <a
+   * <p>A list of Lambda functions.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListFunctionsResponse">AWS
    * API Reference</a></p>
    */
@@ -51,37 +50,37 @@ namespace Model
 
 
     /**
-     * <p>A string, present if there are more functions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
 
     /**
-     * <p>A string, present if there are more functions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
 
     /**
-     * <p>A string, present if there are more functions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
 
     /**
-     * <p>A string, present if there are more functions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
 
     /**
-     * <p>A string, present if there are more functions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline ListFunctionsResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
 
     /**
-     * <p>A string, present if there are more functions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline ListFunctionsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
-     * <p>A string, present if there are more functions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline ListFunctionsResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
 

@@ -36,11 +36,6 @@ namespace Lambda
 {
 namespace Model
 {
-  /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListVersionsByFunctionResponse">AWS
-   * API Reference</a></p>
-   */
   class AWS_LAMBDA_API ListVersionsByFunctionResult
   {
   public:
@@ -50,37 +45,37 @@ namespace Model
 
 
     /**
-     * <p>A string, present if there are more function versions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
 
     /**
-     * <p>A string, present if there are more function versions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
 
     /**
-     * <p>A string, present if there are more function versions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
 
     /**
-     * <p>A string, present if there are more function versions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
 
     /**
-     * <p>A string, present if there are more function versions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline ListVersionsByFunctionResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
 
     /**
-     * <p>A string, present if there are more function versions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline ListVersionsByFunctionResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
-     * <p>A string, present if there are more function versions.</p>
+     * <p>The pagination token that's included if more results are available.</p>
      */
     inline ListVersionsByFunctionResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
 

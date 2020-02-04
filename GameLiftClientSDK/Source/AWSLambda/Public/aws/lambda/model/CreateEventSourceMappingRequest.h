@@ -29,15 +29,12 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/CreateEventSourceMappingRequest">AWS
-   * API Reference</a></p>
    */
   class AWS_LAMBDA_API CreateEventSourceMappingRequest : public LambdaRequest
   {
   public:
     CreateEventSourceMappingRequest();
-    
+
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
     // Note: this is not true for response, multiple operations may have the same response name,
@@ -48,325 +45,334 @@ namespace Model
 
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB
-     * stream that is the event source. Any record added to this stream could cause AWS
-     * Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>.
-     * AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
-     * function as JSON.</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline const Aws::String& GetEventSourceArn() const{ return m_eventSourceArn; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB
-     * stream that is the event source. Any record added to this stream could cause AWS
-     * Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>.
-     * AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
-     * function as JSON.</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
+     */
+    inline bool EventSourceArnHasBeenSet() const { return m_eventSourceArnHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline void SetEventSourceArn(const Aws::String& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB
-     * stream that is the event source. Any record added to this stream could cause AWS
-     * Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>.
-     * AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
-     * function as JSON.</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline void SetEventSourceArn(Aws::String&& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB
-     * stream that is the event source. Any record added to this stream could cause AWS
-     * Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>.
-     * AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
-     * function as JSON.</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline void SetEventSourceArn(const char* value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB
-     * stream that is the event source. Any record added to this stream could cause AWS
-     * Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>.
-     * AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
-     * function as JSON.</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline CreateEventSourceMappingRequest& WithEventSourceArn(const Aws::String& value) { SetEventSourceArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB
-     * stream that is the event source. Any record added to this stream could cause AWS
-     * Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>.
-     * AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
-     * function as JSON.</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline CreateEventSourceMappingRequest& WithEventSourceArn(Aws::String&& value) { SetEventSourceArn(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB
-     * stream that is the event source. Any record added to this stream could cause AWS
-     * Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>.
-     * AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
-     * function as JSON.</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline CreateEventSourceMappingRequest& WithEventSourceArn(const char* value) { SetEventSourceArn(value); return *this;}
 
 
     /**
-     * <p>The Lambda function to invoke when AWS Lambda detects an event on the
-     * stream.</p> <p> You can specify the function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p>
-     * If you are using versioning, you can also provide a qualified function ARN (ARN
-     * that is qualified with function version or alias name as suffix). For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-     * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
-     * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length.</p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline const Aws::String& GetFunctionName() const{ return m_functionName; }
 
     /**
-     * <p>The Lambda function to invoke when AWS Lambda detects an event on the
-     * stream.</p> <p> You can specify the function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p>
-     * If you are using versioning, you can also provide a qualified function ARN (ARN
-     * that is qualified with function version or alias name as suffix). For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-     * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
-     * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length.</p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
+     */
+    inline bool FunctionNameHasBeenSet() const { return m_functionNameHasBeenSet; }
+
+    /**
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
     /**
-     * <p>The Lambda function to invoke when AWS Lambda detects an event on the
-     * stream.</p> <p> You can specify the function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p>
-     * If you are using versioning, you can also provide a qualified function ARN (ARN
-     * that is qualified with function version or alias name as suffix). For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-     * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
-     * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length.</p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
 
     /**
-     * <p>The Lambda function to invoke when AWS Lambda detects an event on the
-     * stream.</p> <p> You can specify the function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p>
-     * If you are using versioning, you can also provide a qualified function ARN (ARN
-     * that is qualified with function version or alias name as suffix). For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-     * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
-     * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length.</p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
 
     /**
-     * <p>The Lambda function to invoke when AWS Lambda detects an event on the
-     * stream.</p> <p> You can specify the function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p>
-     * If you are using versioning, you can also provide a qualified function ARN (ARN
-     * that is qualified with function version or alias name as suffix). For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-     * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
-     * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length.</p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline CreateEventSourceMappingRequest& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
 
     /**
-     * <p>The Lambda function to invoke when AWS Lambda detects an event on the
-     * stream.</p> <p> You can specify the function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p>
-     * If you are using versioning, you can also provide a qualified function ARN (ARN
-     * that is qualified with function version or alias name as suffix). For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-     * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
-     * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length.</p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline CreateEventSourceMappingRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
 
     /**
-     * <p>The Lambda function to invoke when AWS Lambda detects an event on the
-     * stream.</p> <p> You can specify the function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p>
-     * If you are using versioning, you can also provide a qualified function ARN (ARN
-     * that is qualified with function version or alias name as suffix). For more
-     * information about versioning, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-     * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
-     * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length.</p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline CreateEventSourceMappingRequest& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
 
 
     /**
-     * <p>Indicates whether AWS Lambda should begin polling the event source. By
-     * default, <code>Enabled</code> is true. </p>
+     * <p>Disables the event source mapping to pause polling and invocation.</p>
      */
     inline bool GetEnabled() const{ return m_enabled; }
 
     /**
-     * <p>Indicates whether AWS Lambda should begin polling the event source. By
-     * default, <code>Enabled</code> is true. </p>
+     * <p>Disables the event source mapping to pause polling and invocation.</p>
+     */
+    inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
+
+    /**
+     * <p>Disables the event source mapping to pause polling and invocation.</p>
      */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
 
     /**
-     * <p>Indicates whether AWS Lambda should begin polling the event source. By
-     * default, <code>Enabled</code> is true. </p>
+     * <p>Disables the event source mapping to pause polling and invocation.</p>
      */
     inline CreateEventSourceMappingRequest& WithEnabled(bool value) { SetEnabled(value); return *this;}
 
 
     /**
-     * <p>The largest number of records that AWS Lambda will retrieve from your event
-     * source at the time of invoking your function. Your function receives an event
-     * with all the retrieved records. The default is 100 records.</p>
+     * <p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon
+     * DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon
+     * Simple Queue Service</b> - Default 10. Max 10.</p> </li> </ul>
      */
     inline int GetBatchSize() const{ return m_batchSize; }
 
     /**
-     * <p>The largest number of records that AWS Lambda will retrieve from your event
-     * source at the time of invoking your function. Your function receives an event
-     * with all the retrieved records. The default is 100 records.</p>
+     * <p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon
+     * DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon
+     * Simple Queue Service</b> - Default 10. Max 10.</p> </li> </ul>
+     */
+    inline bool BatchSizeHasBeenSet() const { return m_batchSizeHasBeenSet; }
+
+    /**
+     * <p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon
+     * DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon
+     * Simple Queue Service</b> - Default 10. Max 10.</p> </li> </ul>
      */
     inline void SetBatchSize(int value) { m_batchSizeHasBeenSet = true; m_batchSize = value; }
 
     /**
-     * <p>The largest number of records that AWS Lambda will retrieve from your event
-     * source at the time of invoking your function. Your function receives an event
-     * with all the retrieved records. The default is 100 records.</p>
+     * <p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon
+     * DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon
+     * Simple Queue Service</b> - Default 10. Max 10.</p> </li> </ul>
      */
     inline CreateEventSourceMappingRequest& WithBatchSize(int value) { SetBatchSize(value); return *this;}
 
 
+    
+    inline int GetMaximumBatchingWindowInSeconds() const{ return m_maximumBatchingWindowInSeconds; }
+
+    
+    inline bool MaximumBatchingWindowInSecondsHasBeenSet() const { return m_maximumBatchingWindowInSecondsHasBeenSet; }
+
+    
+    inline void SetMaximumBatchingWindowInSeconds(int value) { m_maximumBatchingWindowInSecondsHasBeenSet = true; m_maximumBatchingWindowInSeconds = value; }
+
+    
+    inline CreateEventSourceMappingRequest& WithMaximumBatchingWindowInSeconds(int value) { SetMaximumBatchingWindowInSeconds(value); return *this;}
+
+
     /**
-     * <p>The position in the stream where AWS Lambda should start reading. Valid only
-     * for Kinesis streams. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a>
-     * in the <i>Amazon Kinesis API Reference</i>. </p>
+     * <p>The position in a stream from which to start reading. Required for Amazon
+     * Kinesis and Amazon DynamoDB Streams sources. <code>AT_TIMESTAMP</code> is only
+     * supported for Amazon Kinesis streams.</p>
      */
     inline const EventSourcePosition& GetStartingPosition() const{ return m_startingPosition; }
 
     /**
-     * <p>The position in the stream where AWS Lambda should start reading. Valid only
-     * for Kinesis streams. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a>
-     * in the <i>Amazon Kinesis API Reference</i>. </p>
+     * <p>The position in a stream from which to start reading. Required for Amazon
+     * Kinesis and Amazon DynamoDB Streams sources. <code>AT_TIMESTAMP</code> is only
+     * supported for Amazon Kinesis streams.</p>
+     */
+    inline bool StartingPositionHasBeenSet() const { return m_startingPositionHasBeenSet; }
+
+    /**
+     * <p>The position in a stream from which to start reading. Required for Amazon
+     * Kinesis and Amazon DynamoDB Streams sources. <code>AT_TIMESTAMP</code> is only
+     * supported for Amazon Kinesis streams.</p>
      */
     inline void SetStartingPosition(const EventSourcePosition& value) { m_startingPositionHasBeenSet = true; m_startingPosition = value; }
 
     /**
-     * <p>The position in the stream where AWS Lambda should start reading. Valid only
-     * for Kinesis streams. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a>
-     * in the <i>Amazon Kinesis API Reference</i>. </p>
+     * <p>The position in a stream from which to start reading. Required for Amazon
+     * Kinesis and Amazon DynamoDB Streams sources. <code>AT_TIMESTAMP</code> is only
+     * supported for Amazon Kinesis streams.</p>
      */
     inline void SetStartingPosition(EventSourcePosition&& value) { m_startingPositionHasBeenSet = true; m_startingPosition = std::move(value); }
 
     /**
-     * <p>The position in the stream where AWS Lambda should start reading. Valid only
-     * for Kinesis streams. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a>
-     * in the <i>Amazon Kinesis API Reference</i>. </p>
+     * <p>The position in a stream from which to start reading. Required for Amazon
+     * Kinesis and Amazon DynamoDB Streams sources. <code>AT_TIMESTAMP</code> is only
+     * supported for Amazon Kinesis streams.</p>
      */
     inline CreateEventSourceMappingRequest& WithStartingPosition(const EventSourcePosition& value) { SetStartingPosition(value); return *this;}
 
     /**
-     * <p>The position in the stream where AWS Lambda should start reading. Valid only
-     * for Kinesis streams. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a>
-     * in the <i>Amazon Kinesis API Reference</i>. </p>
+     * <p>The position in a stream from which to start reading. Required for Amazon
+     * Kinesis and Amazon DynamoDB Streams sources. <code>AT_TIMESTAMP</code> is only
+     * supported for Amazon Kinesis streams.</p>
      */
     inline CreateEventSourceMappingRequest& WithStartingPosition(EventSourcePosition&& value) { SetStartingPosition(std::move(value)); return *this;}
 
 
     /**
-     * <p>The timestamp of the data record from which to start reading. Used with <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard
-     * iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not
-     * exist, the iterator returned is for the next (later) record. If the timestamp is
-     * older than the current trim horizon, the iterator returned is for the oldest
-     * untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+     * <p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time
+     * from which to start reading.</p>
      */
     inline const Aws::Utils::DateTime& GetStartingPositionTimestamp() const{ return m_startingPositionTimestamp; }
 
     /**
-     * <p>The timestamp of the data record from which to start reading. Used with <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard
-     * iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not
-     * exist, the iterator returned is for the next (later) record. If the timestamp is
-     * older than the current trim horizon, the iterator returned is for the oldest
-     * untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+     * <p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time
+     * from which to start reading.</p>
+     */
+    inline bool StartingPositionTimestampHasBeenSet() const { return m_startingPositionTimestampHasBeenSet; }
+
+    /**
+     * <p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time
+     * from which to start reading.</p>
      */
     inline void SetStartingPositionTimestamp(const Aws::Utils::DateTime& value) { m_startingPositionTimestampHasBeenSet = true; m_startingPositionTimestamp = value; }
 
     /**
-     * <p>The timestamp of the data record from which to start reading. Used with <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard
-     * iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not
-     * exist, the iterator returned is for the next (later) record. If the timestamp is
-     * older than the current trim horizon, the iterator returned is for the oldest
-     * untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+     * <p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time
+     * from which to start reading.</p>
      */
     inline void SetStartingPositionTimestamp(Aws::Utils::DateTime&& value) { m_startingPositionTimestampHasBeenSet = true; m_startingPositionTimestamp = std::move(value); }
 
     /**
-     * <p>The timestamp of the data record from which to start reading. Used with <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard
-     * iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not
-     * exist, the iterator returned is for the next (later) record. If the timestamp is
-     * older than the current trim horizon, the iterator returned is for the oldest
-     * untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+     * <p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time
+     * from which to start reading.</p>
      */
     inline CreateEventSourceMappingRequest& WithStartingPositionTimestamp(const Aws::Utils::DateTime& value) { SetStartingPositionTimestamp(value); return *this;}
 
     /**
-     * <p>The timestamp of the data record from which to start reading. Used with <a
-     * href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard
-     * iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not
-     * exist, the iterator returned is for the next (later) record. If the timestamp is
-     * older than the current trim horizon, the iterator returned is for the oldest
-     * untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+     * <p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time
+     * from which to start reading.</p>
      */
     inline CreateEventSourceMappingRequest& WithStartingPositionTimestamp(Aws::Utils::DateTime&& value) { SetStartingPositionTimestamp(std::move(value)); return *this;}
 
@@ -383,6 +389,9 @@ namespace Model
 
     int m_batchSize;
     bool m_batchSizeHasBeenSet;
+
+    int m_maximumBatchingWindowInSeconds;
+    bool m_maximumBatchingWindowInSecondsHasBeenSet;
 
     EventSourcePosition m_startingPosition;
     bool m_startingPositionHasBeenSet;

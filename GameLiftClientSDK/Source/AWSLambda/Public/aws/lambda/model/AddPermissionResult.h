@@ -34,11 +34,6 @@ namespace Lambda
 {
 namespace Model
 {
-  /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/AddPermissionResponse">AWS
-   * API Reference</a></p>
-   */
   class AWS_LAMBDA_API AddPermissionResult
   {
   public:
@@ -48,51 +43,37 @@ namespace Model
 
 
     /**
-     * <p>The permission statement you specified in the request. The response returns
-     * the same as a string using a backslash ("\") as an escape character in the
-     * JSON.</p>
+     * <p>The permission statement that's added to the function policy.</p>
      */
     inline const Aws::String& GetStatement() const{ return m_statement; }
 
     /**
-     * <p>The permission statement you specified in the request. The response returns
-     * the same as a string using a backslash ("\") as an escape character in the
-     * JSON.</p>
+     * <p>The permission statement that's added to the function policy.</p>
      */
     inline void SetStatement(const Aws::String& value) { m_statement = value; }
 
     /**
-     * <p>The permission statement you specified in the request. The response returns
-     * the same as a string using a backslash ("\") as an escape character in the
-     * JSON.</p>
+     * <p>The permission statement that's added to the function policy.</p>
      */
     inline void SetStatement(Aws::String&& value) { m_statement = std::move(value); }
 
     /**
-     * <p>The permission statement you specified in the request. The response returns
-     * the same as a string using a backslash ("\") as an escape character in the
-     * JSON.</p>
+     * <p>The permission statement that's added to the function policy.</p>
      */
     inline void SetStatement(const char* value) { m_statement.assign(value); }
 
     /**
-     * <p>The permission statement you specified in the request. The response returns
-     * the same as a string using a backslash ("\") as an escape character in the
-     * JSON.</p>
+     * <p>The permission statement that's added to the function policy.</p>
      */
     inline AddPermissionResult& WithStatement(const Aws::String& value) { SetStatement(value); return *this;}
 
     /**
-     * <p>The permission statement you specified in the request. The response returns
-     * the same as a string using a backslash ("\") as an escape character in the
-     * JSON.</p>
+     * <p>The permission statement that's added to the function policy.</p>
      */
     inline AddPermissionResult& WithStatement(Aws::String&& value) { SetStatement(std::move(value)); return *this;}
 
     /**
-     * <p>The permission statement you specified in the request. The response returns
-     * the same as a string using a backslash ("\") as an escape character in the
-     * JSON.</p>
+     * <p>The permission statement that's added to the function policy.</p>
      */
     inline AddPermissionResult& WithStatement(const char* value) { SetStatement(value); return *this;}
 

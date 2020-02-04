@@ -9,7 +9,10 @@ public class GameLiftClientSDK : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore", "AWSLambda" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore", "CognitoIdentity", "AWSLambda", "AWSIdentityManagement" });
+
+        PublicDefinitions.Add("USE_IMPORT_EXPORT");
+        PublicDefinitions.Add("USE_WINDOWS_DLL_SEMANTICS");
 
         PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
@@ -30,7 +33,7 @@ public class GameLiftClientSDK : ModuleRules
 			}
 			else
 			{
-				throw new BuildException("aws-cpp-sdk-gamelift.lib not found. Expected in this location: " + GameLiftLibFile);
+			    throw new BuildException("aws-cpp-sdk-gamelift.lib not found. Expected in this location: " + GameLiftLibFile);
 			}
 
 			string GameLiftDLLFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-gamelift.dll");

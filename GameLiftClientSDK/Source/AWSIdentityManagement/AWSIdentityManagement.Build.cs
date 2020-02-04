@@ -21,7 +21,28 @@ public class AWSIdentityManagement : ModuleRules
 		{
 			PublicLibraryPaths.Add(ThirdPartyPath);
 
-			string AWSIdentityManagementLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-identity-management.lib");
+            string AWSstsLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-sts.lib");
+            if (File.Exists(AWSstsLibFile))
+            {
+                PublicAdditionalLibraries.Add(AWSstsLibFile);
+            }
+            else
+            {
+                throw new BuildException("aws-cpp-sdk-sts.lib not found. Expected in this location: " + AWSstsLibFile);
+            }
+
+            string AWSstsDLLFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-sts.dll");
+            if (File.Exists(AWSstsDLLFile))
+            {
+                PublicDelayLoadDLLs.Add("aws-cpp-sdk-sts.dll");
+                RuntimeDependencies.Add(AWSstsDLLFile);
+            }
+            else
+            {
+                throw new BuildException("aws-cpp-sdk-sts.dll not found. Expected in this location: " + AWSstsDLLFile);
+            }
+
+            string AWSIdentityManagementLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-identity-management.lib");
 			if (File.Exists(AWSIdentityManagementLibFile))
 			{
 				PublicAdditionalLibraries.Add(AWSIdentityManagementLibFile);
@@ -39,7 +60,7 @@ public class AWSIdentityManagement : ModuleRules
 			}
 			else
 			{
-				throw new BuildException("aws-cpp-sdk-lambda.dll not found. Expected in this location: " + AWSIdentityManagementDLLFile);
+				throw new BuildException("aws-cpp-sdk-identity-management.dll not found. Expected in this location: " + AWSIdentityManagementDLLFile);
 			}
 		}
 	}

@@ -32,15 +32,12 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListFunctionsRequest">AWS
-   * API Reference</a></p>
    */
   class AWS_LAMBDA_API ListFunctionsRequest : public LambdaRequest
   {
   public:
     ListFunctionsRequest();
-    
+
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
     // Note: this is not true for response, multiple operations may have the same response name,
@@ -53,182 +50,169 @@ namespace Model
 
 
     /**
-     * <p>Optional string. If not specified, will return only regular function versions
-     * (i.e., non-replicated versions).</p> <p>Valid values are:</p> <p>The region from
-     * which the functions are replicated. For example, if you specify
-     * <code>us-east-1</code>, only functions replicated from that region will be
-     * returned.</p> <p> <code>ALL</code> _ Will return all functions from any region.
-     * If specified, you also must specify a valid FunctionVersion parameter.</p>
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
      */
     inline const Aws::String& GetMasterRegion() const{ return m_masterRegion; }
 
     /**
-     * <p>Optional string. If not specified, will return only regular function versions
-     * (i.e., non-replicated versions).</p> <p>Valid values are:</p> <p>The region from
-     * which the functions are replicated. For example, if you specify
-     * <code>us-east-1</code>, only functions replicated from that region will be
-     * returned.</p> <p> <code>ALL</code> _ Will return all functions from any region.
-     * If specified, you also must specify a valid FunctionVersion parameter.</p>
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
+     */
+    inline bool MasterRegionHasBeenSet() const { return m_masterRegionHasBeenSet; }
+
+    /**
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
      */
     inline void SetMasterRegion(const Aws::String& value) { m_masterRegionHasBeenSet = true; m_masterRegion = value; }
 
     /**
-     * <p>Optional string. If not specified, will return only regular function versions
-     * (i.e., non-replicated versions).</p> <p>Valid values are:</p> <p>The region from
-     * which the functions are replicated. For example, if you specify
-     * <code>us-east-1</code>, only functions replicated from that region will be
-     * returned.</p> <p> <code>ALL</code> _ Will return all functions from any region.
-     * If specified, you also must specify a valid FunctionVersion parameter.</p>
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
      */
     inline void SetMasterRegion(Aws::String&& value) { m_masterRegionHasBeenSet = true; m_masterRegion = std::move(value); }
 
     /**
-     * <p>Optional string. If not specified, will return only regular function versions
-     * (i.e., non-replicated versions).</p> <p>Valid values are:</p> <p>The region from
-     * which the functions are replicated. For example, if you specify
-     * <code>us-east-1</code>, only functions replicated from that region will be
-     * returned.</p> <p> <code>ALL</code> _ Will return all functions from any region.
-     * If specified, you also must specify a valid FunctionVersion parameter.</p>
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
      */
     inline void SetMasterRegion(const char* value) { m_masterRegionHasBeenSet = true; m_masterRegion.assign(value); }
 
     /**
-     * <p>Optional string. If not specified, will return only regular function versions
-     * (i.e., non-replicated versions).</p> <p>Valid values are:</p> <p>The region from
-     * which the functions are replicated. For example, if you specify
-     * <code>us-east-1</code>, only functions replicated from that region will be
-     * returned.</p> <p> <code>ALL</code> _ Will return all functions from any region.
-     * If specified, you also must specify a valid FunctionVersion parameter.</p>
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
      */
     inline ListFunctionsRequest& WithMasterRegion(const Aws::String& value) { SetMasterRegion(value); return *this;}
 
     /**
-     * <p>Optional string. If not specified, will return only regular function versions
-     * (i.e., non-replicated versions).</p> <p>Valid values are:</p> <p>The region from
-     * which the functions are replicated. For example, if you specify
-     * <code>us-east-1</code>, only functions replicated from that region will be
-     * returned.</p> <p> <code>ALL</code> _ Will return all functions from any region.
-     * If specified, you also must specify a valid FunctionVersion parameter.</p>
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
      */
     inline ListFunctionsRequest& WithMasterRegion(Aws::String&& value) { SetMasterRegion(std::move(value)); return *this;}
 
     /**
-     * <p>Optional string. If not specified, will return only regular function versions
-     * (i.e., non-replicated versions).</p> <p>Valid values are:</p> <p>The region from
-     * which the functions are replicated. For example, if you specify
-     * <code>us-east-1</code>, only functions replicated from that region will be
-     * returned.</p> <p> <code>ALL</code> _ Will return all functions from any region.
-     * If specified, you also must specify a valid FunctionVersion parameter.</p>
+     * <p>For Lambda@Edge functions, the AWS Region of the master function. For
+     * example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set
+     * <code>FunctionVersion</code> to <code>ALL</code>.</p>
      */
     inline ListFunctionsRequest& WithMasterRegion(const char* value) { SetMasterRegion(value); return *this;}
 
 
     /**
-     * <p>Optional string. If not specified, only the unqualified functions ARNs
-     * (Amazon Resource Names) will be returned.</p> <p>Valid value:</p> <p>
-     * <code>ALL</code> _ Will return all versions, including <code>$LATEST</code>
-     * which will have fully qualified ARNs (Amazon Resource Names).</p>
+     * <p>Set to <code>ALL</code> to include entries for all published versions of each
+     * function.</p>
      */
     inline const FunctionVersion& GetFunctionVersion() const{ return m_functionVersion; }
 
     /**
-     * <p>Optional string. If not specified, only the unqualified functions ARNs
-     * (Amazon Resource Names) will be returned.</p> <p>Valid value:</p> <p>
-     * <code>ALL</code> _ Will return all versions, including <code>$LATEST</code>
-     * which will have fully qualified ARNs (Amazon Resource Names).</p>
+     * <p>Set to <code>ALL</code> to include entries for all published versions of each
+     * function.</p>
+     */
+    inline bool FunctionVersionHasBeenSet() const { return m_functionVersionHasBeenSet; }
+
+    /**
+     * <p>Set to <code>ALL</code> to include entries for all published versions of each
+     * function.</p>
      */
     inline void SetFunctionVersion(const FunctionVersion& value) { m_functionVersionHasBeenSet = true; m_functionVersion = value; }
 
     /**
-     * <p>Optional string. If not specified, only the unqualified functions ARNs
-     * (Amazon Resource Names) will be returned.</p> <p>Valid value:</p> <p>
-     * <code>ALL</code> _ Will return all versions, including <code>$LATEST</code>
-     * which will have fully qualified ARNs (Amazon Resource Names).</p>
+     * <p>Set to <code>ALL</code> to include entries for all published versions of each
+     * function.</p>
      */
     inline void SetFunctionVersion(FunctionVersion&& value) { m_functionVersionHasBeenSet = true; m_functionVersion = std::move(value); }
 
     /**
-     * <p>Optional string. If not specified, only the unqualified functions ARNs
-     * (Amazon Resource Names) will be returned.</p> <p>Valid value:</p> <p>
-     * <code>ALL</code> _ Will return all versions, including <code>$LATEST</code>
-     * which will have fully qualified ARNs (Amazon Resource Names).</p>
+     * <p>Set to <code>ALL</code> to include entries for all published versions of each
+     * function.</p>
      */
     inline ListFunctionsRequest& WithFunctionVersion(const FunctionVersion& value) { SetFunctionVersion(value); return *this;}
 
     /**
-     * <p>Optional string. If not specified, only the unqualified functions ARNs
-     * (Amazon Resource Names) will be returned.</p> <p>Valid value:</p> <p>
-     * <code>ALL</code> _ Will return all versions, including <code>$LATEST</code>
-     * which will have fully qualified ARNs (Amazon Resource Names).</p>
+     * <p>Set to <code>ALL</code> to include entries for all published versions of each
+     * function.</p>
      */
     inline ListFunctionsRequest& WithFunctionVersion(FunctionVersion&& value) { SetFunctionVersion(std::move(value)); return *this;}
 
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListFunctions</code> operation. If present, indicates where to continue
-     * the listing. </p>
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
      */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListFunctions</code> operation. If present, indicates where to continue
-     * the listing. </p>
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
+     */
+    inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+
+    /**
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
      */
     inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListFunctions</code> operation. If present, indicates where to continue
-     * the listing. </p>
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
      */
     inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListFunctions</code> operation. If present, indicates where to continue
-     * the listing. </p>
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
      */
     inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListFunctions</code> operation. If present, indicates where to continue
-     * the listing. </p>
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
      */
     inline ListFunctionsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListFunctions</code> operation. If present, indicates where to continue
-     * the listing. </p>
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
      */
     inline ListFunctionsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListFunctions</code> operation. If present, indicates where to continue
-     * the listing. </p>
+     * <p>Specify the pagination token that's returned by a previous request to
+     * retrieve the next page of results.</p>
      */
     inline ListFunctionsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
 
     /**
-     * <p>Optional integer. Specifies the maximum number of AWS Lambda functions to
-     * return in response. This parameter value must be greater than 0.</p>
+     * <p>Specify a value between 1 and 50 to limit the number of functions in the
+     * response.</p>
      */
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Optional integer. Specifies the maximum number of AWS Lambda functions to
-     * return in response. This parameter value must be greater than 0.</p>
+     * <p>Specify a value between 1 and 50 to limit the number of functions in the
+     * response.</p>
+     */
+    inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
+
+    /**
+     * <p>Specify a value between 1 and 50 to limit the number of functions in the
+     * response.</p>
      */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Optional integer. Specifies the maximum number of AWS Lambda functions to
-     * return in response. This parameter value must be greater than 0.</p>
+     * <p>Specify a value between 1 and 50 to limit the number of functions in the
+     * response.</p>
      */
     inline ListFunctionsRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
 

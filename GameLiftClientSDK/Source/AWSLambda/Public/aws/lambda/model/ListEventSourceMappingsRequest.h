@@ -31,15 +31,12 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListEventSourceMappingsRequest">AWS
-   * API Reference</a></p>
    */
   class AWS_LAMBDA_API ListEventSourceMappingsRequest : public LambdaRequest
   {
   public:
     ListEventSourceMappingsRequest();
-    
+
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
     // Note: this is not true for response, multiple operations may have the same response name,
@@ -52,212 +49,249 @@ namespace Model
 
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
-     * is optional.)</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline const Aws::String& GetEventSourceArn() const{ return m_eventSourceArn; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
-     * is optional.)</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
+     */
+    inline bool EventSourceArnHasBeenSet() const { return m_eventSourceArnHasBeenSet; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline void SetEventSourceArn(const Aws::String& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
-     * is optional.)</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline void SetEventSourceArn(Aws::String&& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
-     * is optional.)</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline void SetEventSourceArn(const char* value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
-     * is optional.)</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline ListEventSourceMappingsRequest& WithEventSourceArn(const Aws::String& value) { SetEventSourceArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
-     * is optional.)</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline ListEventSourceMappingsRequest& WithEventSourceArn(Aws::String&& value) { SetEventSourceArn(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
-     * is optional.)</p>
+     * <p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p>
+     * <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p>
+     * </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li>
+     * <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li>
+     * </ul>
      */
     inline ListEventSourceMappingsRequest& WithEventSourceArn(const char* value) { SetEventSourceArn(value); return *this;}
 
 
     /**
-     * <p>The name of the Lambda function.</p> <p> You can specify the function name
-     * (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name
-     * (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are
-     * using versioning, you can also provide a qualified function ARN (ARN that is
-     * qualified with function version or alias name as suffix). AWS Lambda also allows
-     * you to specify only the function name with the account ID qualifier (for
-     * example, <code>account-id:Thumbnail</code>). Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline const Aws::String& GetFunctionName() const{ return m_functionName; }
 
     /**
-     * <p>The name of the Lambda function.</p> <p> You can specify the function name
-     * (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name
-     * (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are
-     * using versioning, you can also provide a qualified function ARN (ARN that is
-     * qualified with function version or alias name as suffix). AWS Lambda also allows
-     * you to specify only the function name with the account ID qualifier (for
-     * example, <code>account-id:Thumbnail</code>). Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
+     */
+    inline bool FunctionNameHasBeenSet() const { return m_functionNameHasBeenSet; }
+
+    /**
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
     /**
-     * <p>The name of the Lambda function.</p> <p> You can specify the function name
-     * (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name
-     * (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are
-     * using versioning, you can also provide a qualified function ARN (ARN that is
-     * qualified with function version or alias name as suffix). AWS Lambda also allows
-     * you to specify only the function name with the account ID qualifier (for
-     * example, <code>account-id:Thumbnail</code>). Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
 
     /**
-     * <p>The name of the Lambda function.</p> <p> You can specify the function name
-     * (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name
-     * (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are
-     * using versioning, you can also provide a qualified function ARN (ARN that is
-     * qualified with function version or alias name as suffix). AWS Lambda also allows
-     * you to specify only the function name with the account ID qualifier (for
-     * example, <code>account-id:Thumbnail</code>). Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
 
     /**
-     * <p>The name of the Lambda function.</p> <p> You can specify the function name
-     * (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name
-     * (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are
-     * using versioning, you can also provide a qualified function ARN (ARN that is
-     * qualified with function version or alias name as suffix). AWS Lambda also allows
-     * you to specify only the function name with the account ID qualifier (for
-     * example, <code>account-id:Thumbnail</code>). Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline ListEventSourceMappingsRequest& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
 
     /**
-     * <p>The name of the Lambda function.</p> <p> You can specify the function name
-     * (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name
-     * (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are
-     * using versioning, you can also provide a qualified function ARN (ARN that is
-     * qualified with function version or alias name as suffix). AWS Lambda also allows
-     * you to specify only the function name with the account ID qualifier (for
-     * example, <code>account-id:Thumbnail</code>). Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline ListEventSourceMappingsRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the Lambda function.</p> <p> You can specify the function name
-     * (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name
-     * (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are
-     * using versioning, you can also provide a qualified function ARN (ARN that is
-     * qualified with function version or alias name as suffix). AWS Lambda also allows
-     * you to specify only the function name with the account ID qualifier (for
-     * example, <code>account-id:Thumbnail</code>). Note that the length constraint
-     * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
+     * </li> <li> <p> <b>Version or Alias ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it's limited to 64 characters in length.</p>
      */
     inline ListEventSourceMappingsRequest& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
 
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListEventSourceMappings</code> operation. If present, specifies to
-     * continue the list from where the returning call left off. </p>
+     * <p>A pagination token returned by a previous call.</p>
      */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListEventSourceMappings</code> operation. If present, specifies to
-     * continue the list from where the returning call left off. </p>
+     * <p>A pagination token returned by a previous call.</p>
+     */
+    inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+
+    /**
+     * <p>A pagination token returned by a previous call.</p>
      */
     inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListEventSourceMappings</code> operation. If present, specifies to
-     * continue the list from where the returning call left off. </p>
+     * <p>A pagination token returned by a previous call.</p>
      */
     inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListEventSourceMappings</code> operation. If present, specifies to
-     * continue the list from where the returning call left off. </p>
+     * <p>A pagination token returned by a previous call.</p>
      */
     inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListEventSourceMappings</code> operation. If present, specifies to
-     * continue the list from where the returning call left off. </p>
+     * <p>A pagination token returned by a previous call.</p>
      */
     inline ListEventSourceMappingsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListEventSourceMappings</code> operation. If present, specifies to
-     * continue the list from where the returning call left off. </p>
+     * <p>A pagination token returned by a previous call.</p>
      */
     inline ListEventSourceMappingsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
-     * <p>Optional string. An opaque pagination token returned from a previous
-     * <code>ListEventSourceMappings</code> operation. If present, specifies to
-     * continue the list from where the returning call left off. </p>
+     * <p>A pagination token returned by a previous call.</p>
      */
     inline ListEventSourceMappingsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
 
     /**
-     * <p>Optional integer. Specifies the maximum number of event sources to return in
-     * response. This value must be greater than 0.</p>
+     * <p>The maximum number of event source mappings to return.</p>
      */
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Optional integer. Specifies the maximum number of event sources to return in
-     * response. This value must be greater than 0.</p>
+     * <p>The maximum number of event source mappings to return.</p>
+     */
+    inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
+
+    /**
+     * <p>The maximum number of event source mappings to return.</p>
      */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Optional integer. Specifies the maximum number of event sources to return in
-     * response. This value must be greater than 0.</p>
+     * <p>The maximum number of event source mappings to return.</p>
      */
     inline ListEventSourceMappingsRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
 

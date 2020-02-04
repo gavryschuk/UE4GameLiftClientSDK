@@ -9,6 +9,8 @@
 #include "aws/gamelift/GameLiftClient.h"
 #include "aws/gamelift/model/CreateGameSessionResult.h"
 #include "aws/core/auth/AWSCredentialsProvider.h"
+
+//#include <aws/lambda/LambdaClient.h>
 //
 
 #include "GameLiftClientApi.generated.h"
@@ -257,3 +259,39 @@ private:
 	void OnDescribeGameSessionPlacement(const Aws::GameLift::GameLiftClient* Client, const Aws::GameLift::Model::DescribeGameSessionPlacementRequest& Request, const Aws::GameLift::Model::DescribeGameSessionPlacementOutcome& Outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& Context);
 
 };
+///** EH */
+//DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLambdaCallSuccess, const TArray<FString>&, GameSessionIds);
+//DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLambdaCallFailed, const FString&, ErrorMessage);
+//UCLASS()
+//class GAMELIFTCLIENTSDK_API UGameLiftLambdaCall : public UObject
+//{
+//	GENERATED_BODY()
+//
+//	friend class UGameLiftClientObject;
+//
+//public:
+//
+//	UPROPERTY(BlueprintAssignable, Category = "GameLift LambdaCall")
+//	FOnLambdaCallSuccess OnLambdaCallSuccess;
+//
+//	UPROPERTY(BlueprintAssignable, Category = "GameLift LambdaCall")
+//	FOnLambdaCallFailed OnLambdaCallFailed;
+//
+//private:
+//	Aws::Lambda::LambdaClient* LambdaClient;
+//	/*Aws::GameLift::GameLiftClient* GameLiftClient;
+//	FString FleetId;
+//	FString AliasId;
+//	FString FilterExpression;
+//	FString SortExpression;*/
+//
+//	static UGameLiftLambdaCall* LambdaCall(FString LambdaFunctionName/*, FString AliasId, FString FilterExpression, FString SortExpression*/);
+//
+//public:
+//	UFUNCTION(BlueprintCallable, Category = "GameLift LambdaCall")
+//	EActivateStatus Activate();
+//
+//private:
+//	void OnLambdaCall(/*const Aws::GameLift::GameLiftClient* Client, const Aws::GameLift::Model::SearchGameSessionsRequest& Request, const Aws::GameLift::Model::SearchGameSessionsOutcome& Outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& Context*/);
+//
+//};

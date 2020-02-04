@@ -32,7 +32,7 @@ namespace Model
   {
   public:
     ListTagsRequest();
-    
+
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
     // Note: this is not true for response, multiple operations may have the same response name,
@@ -43,37 +43,42 @@ namespace Model
 
 
     /**
-     * <p>The ARN (Amazon Resource Name) of the function.</p>
+     * <p>The function's Amazon Resource Name (ARN).</p>
      */
     inline const Aws::String& GetResource() const{ return m_resource; }
 
     /**
-     * <p>The ARN (Amazon Resource Name) of the function.</p>
+     * <p>The function's Amazon Resource Name (ARN).</p>
+     */
+    inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+
+    /**
+     * <p>The function's Amazon Resource Name (ARN).</p>
      */
     inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
 
     /**
-     * <p>The ARN (Amazon Resource Name) of the function.</p>
+     * <p>The function's Amazon Resource Name (ARN).</p>
      */
     inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
 
     /**
-     * <p>The ARN (Amazon Resource Name) of the function.</p>
+     * <p>The function's Amazon Resource Name (ARN).</p>
      */
     inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
 
     /**
-     * <p>The ARN (Amazon Resource Name) of the function.</p>
+     * <p>The function's Amazon Resource Name (ARN).</p>
      */
     inline ListTagsRequest& WithResource(const Aws::String& value) { SetResource(value); return *this;}
 
     /**
-     * <p>The ARN (Amazon Resource Name) of the function.</p>
+     * <p>The function's Amazon Resource Name (ARN).</p>
      */
     inline ListTagsRequest& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
 
     /**
-     * <p>The ARN (Amazon Resource Name) of the function.</p>
+     * <p>The function's Amazon Resource Name (ARN).</p>
      */
     inline ListTagsRequest& WithResource(const char* value) { SetResource(value); return *this;}
 

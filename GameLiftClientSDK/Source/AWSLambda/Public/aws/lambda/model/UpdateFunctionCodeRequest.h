@@ -28,15 +28,12 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionCodeRequest">AWS
-   * API Reference</a></p>
    */
   class AWS_LAMBDA_API UpdateFunctionCodeRequest : public LambdaRequest
   {
   public:
     UpdateFunctionCodeRequest();
-    
+
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
     // Note: this is not true for response, multiple operations may have the same response name,
@@ -47,325 +44,390 @@ namespace Model
 
 
     /**
-     * <p>The existing Lambda function name whose code you want to replace.</p> <p> You
-     * can specify a function name (for example, <code>Thumbnail</code>) or you can
-     * specify Amazon Resource Name (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
      */
     inline const Aws::String& GetFunctionName() const{ return m_functionName; }
 
     /**
-     * <p>The existing Lambda function name whose code you want to replace.</p> <p> You
-     * can specify a function name (for example, <code>Thumbnail</code>) or you can
-     * specify Amazon Resource Name (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
+     */
+    inline bool FunctionNameHasBeenSet() const { return m_functionNameHasBeenSet; }
+
+    /**
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
     /**
-     * <p>The existing Lambda function name whose code you want to replace.</p> <p> You
-     * can specify a function name (for example, <code>Thumbnail</code>) or you can
-     * specify Amazon Resource Name (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
 
     /**
-     * <p>The existing Lambda function name whose code you want to replace.</p> <p> You
-     * can specify a function name (for example, <code>Thumbnail</code>) or you can
-     * specify Amazon Resource Name (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
 
     /**
-     * <p>The existing Lambda function name whose code you want to replace.</p> <p> You
-     * can specify a function name (for example, <code>Thumbnail</code>) or you can
-     * specify Amazon Resource Name (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
      */
     inline UpdateFunctionCodeRequest& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
 
     /**
-     * <p>The existing Lambda function name whose code you want to replace.</p> <p> You
-     * can specify a function name (for example, <code>Thumbnail</code>) or you can
-     * specify Amazon Resource Name (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
      */
     inline UpdateFunctionCodeRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
 
     /**
-     * <p>The existing Lambda function name whose code you want to replace.</p> <p> You
-     * can specify a function name (for example, <code>Thumbnail</code>) or you can
-     * specify Amazon Resource Name (ARN) of the function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
+     * </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li>
+     * <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length
+     * constraint applies only to the full ARN. If you specify only the function name,
+     * it is limited to 64 characters in length.</p>
      */
     inline UpdateFunctionCodeRequest& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
 
 
     /**
-     * <p>The contents of your zip file containing your deployment package. If you are
-     * using the web API directly, the contents of the zip file must be base64-encoded.
-     * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
-     * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+     * <p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI
+     * clients handle the encoding for you.</p>
      */
-    inline const Aws::Utils::ByteBuffer& GetZipFile() const{ return m_zipFile; }
+    inline const Aws::Utils::CryptoBuffer& GetZipFile() const{ return m_zipFile; }
 
     /**
-     * <p>The contents of your zip file containing your deployment package. If you are
-     * using the web API directly, the contents of the zip file must be base64-encoded.
-     * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
-     * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+     * <p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI
+     * clients handle the encoding for you.</p>
      */
-    inline void SetZipFile(const Aws::Utils::ByteBuffer& value) { m_zipFileHasBeenSet = true; m_zipFile = value; }
+    inline bool ZipFileHasBeenSet() const { return m_zipFileHasBeenSet; }
 
     /**
-     * <p>The contents of your zip file containing your deployment package. If you are
-     * using the web API directly, the contents of the zip file must be base64-encoded.
-     * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
-     * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+     * <p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI
+     * clients handle the encoding for you.</p>
      */
-    inline void SetZipFile(Aws::Utils::ByteBuffer&& value) { m_zipFileHasBeenSet = true; m_zipFile = std::move(value); }
+    inline void SetZipFile(const Aws::Utils::CryptoBuffer& value) { m_zipFileHasBeenSet = true; m_zipFile = value; }
 
     /**
-     * <p>The contents of your zip file containing your deployment package. If you are
-     * using the web API directly, the contents of the zip file must be base64-encoded.
-     * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
-     * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+     * <p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI
+     * clients handle the encoding for you.</p>
      */
-    inline UpdateFunctionCodeRequest& WithZipFile(const Aws::Utils::ByteBuffer& value) { SetZipFile(value); return *this;}
+    inline void SetZipFile(Aws::Utils::CryptoBuffer&& value) { m_zipFileHasBeenSet = true; m_zipFile = std::move(value); }
 
     /**
-     * <p>The contents of your zip file containing your deployment package. If you are
-     * using the web API directly, the contents of the zip file must be base64-encoded.
-     * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, see <a
-     * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
-     * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+     * <p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI
+     * clients handle the encoding for you.</p>
      */
-    inline UpdateFunctionCodeRequest& WithZipFile(Aws::Utils::ByteBuffer&& value) { SetZipFile(std::move(value)); return *this;}
+    inline UpdateFunctionCodeRequest& WithZipFile(const Aws::Utils::CryptoBuffer& value) { SetZipFile(value); return *this;}
+
+    /**
+     * <p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI
+     * clients handle the encoding for you.</p>
+     */
+    inline UpdateFunctionCodeRequest& WithZipFile(Aws::Utils::CryptoBuffer&& value) { SetZipFile(std::move(value)); return *this;}
 
 
     /**
-     * <p>Amazon S3 bucket name where the .zip file containing your deployment package
-     * is stored. This bucket must reside in the same AWS Region where you are creating
-     * the Lambda function.</p>
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
      */
     inline const Aws::String& GetS3Bucket() const{ return m_s3Bucket; }
 
     /**
-     * <p>Amazon S3 bucket name where the .zip file containing your deployment package
-     * is stored. This bucket must reside in the same AWS Region where you are creating
-     * the Lambda function.</p>
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
+     */
+    inline bool S3BucketHasBeenSet() const { return m_s3BucketHasBeenSet; }
+
+    /**
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
      */
     inline void SetS3Bucket(const Aws::String& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = value; }
 
     /**
-     * <p>Amazon S3 bucket name where the .zip file containing your deployment package
-     * is stored. This bucket must reside in the same AWS Region where you are creating
-     * the Lambda function.</p>
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
      */
     inline void SetS3Bucket(Aws::String&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::move(value); }
 
     /**
-     * <p>Amazon S3 bucket name where the .zip file containing your deployment package
-     * is stored. This bucket must reside in the same AWS Region where you are creating
-     * the Lambda function.</p>
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
      */
     inline void SetS3Bucket(const char* value) { m_s3BucketHasBeenSet = true; m_s3Bucket.assign(value); }
 
     /**
-     * <p>Amazon S3 bucket name where the .zip file containing your deployment package
-     * is stored. This bucket must reside in the same AWS Region where you are creating
-     * the Lambda function.</p>
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3Bucket(const Aws::String& value) { SetS3Bucket(value); return *this;}
 
     /**
-     * <p>Amazon S3 bucket name where the .zip file containing your deployment package
-     * is stored. This bucket must reside in the same AWS Region where you are creating
-     * the Lambda function.</p>
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3Bucket(Aws::String&& value) { SetS3Bucket(std::move(value)); return *this;}
 
     /**
-     * <p>Amazon S3 bucket name where the .zip file containing your deployment package
-     * is stored. This bucket must reside in the same AWS Region where you are creating
-     * the Lambda function.</p>
+     * <p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can
+     * be in a different AWS account.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3Bucket(const char* value) { SetS3Bucket(value); return *this;}
 
 
     /**
-     * <p>The Amazon S3 object (the deployment package) key name you want to
-     * upload.</p>
+     * <p>The Amazon S3 key of the deployment package.</p>
      */
     inline const Aws::String& GetS3Key() const{ return m_s3Key; }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) key name you want to
-     * upload.</p>
+     * <p>The Amazon S3 key of the deployment package.</p>
+     */
+    inline bool S3KeyHasBeenSet() const { return m_s3KeyHasBeenSet; }
+
+    /**
+     * <p>The Amazon S3 key of the deployment package.</p>
      */
     inline void SetS3Key(const Aws::String& value) { m_s3KeyHasBeenSet = true; m_s3Key = value; }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) key name you want to
-     * upload.</p>
+     * <p>The Amazon S3 key of the deployment package.</p>
      */
     inline void SetS3Key(Aws::String&& value) { m_s3KeyHasBeenSet = true; m_s3Key = std::move(value); }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) key name you want to
-     * upload.</p>
+     * <p>The Amazon S3 key of the deployment package.</p>
      */
     inline void SetS3Key(const char* value) { m_s3KeyHasBeenSet = true; m_s3Key.assign(value); }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) key name you want to
-     * upload.</p>
+     * <p>The Amazon S3 key of the deployment package.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3Key(const Aws::String& value) { SetS3Key(value); return *this;}
 
     /**
-     * <p>The Amazon S3 object (the deployment package) key name you want to
-     * upload.</p>
+     * <p>The Amazon S3 key of the deployment package.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3Key(Aws::String&& value) { SetS3Key(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon S3 object (the deployment package) key name you want to
-     * upload.</p>
+     * <p>The Amazon S3 key of the deployment package.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3Key(const char* value) { SetS3Key(value); return *this;}
 
 
     /**
-     * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
      */
     inline const Aws::String& GetS3ObjectVersion() const{ return m_s3ObjectVersion; }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
+     */
+    inline bool S3ObjectVersionHasBeenSet() const { return m_s3ObjectVersionHasBeenSet; }
+
+    /**
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
      */
     inline void SetS3ObjectVersion(const Aws::String& value) { m_s3ObjectVersionHasBeenSet = true; m_s3ObjectVersion = value; }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
      */
     inline void SetS3ObjectVersion(Aws::String&& value) { m_s3ObjectVersionHasBeenSet = true; m_s3ObjectVersion = std::move(value); }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
      */
     inline void SetS3ObjectVersion(const char* value) { m_s3ObjectVersionHasBeenSet = true; m_s3ObjectVersion.assign(value); }
 
     /**
-     * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3ObjectVersion(const Aws::String& value) { SetS3ObjectVersion(value); return *this;}
 
     /**
-     * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3ObjectVersion(Aws::String&& value) { SetS3ObjectVersion(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+     * <p>For versioned objects, the version of the deployment package object to
+     * use.</p>
      */
     inline UpdateFunctionCodeRequest& WithS3ObjectVersion(const char* value) { SetS3ObjectVersion(value); return *this;}
 
 
     /**
-     * <p>This boolean parameter can be used to request AWS Lambda to update the Lambda
-     * function and publish a version as an atomic operation.</p>
+     * <p>Set to true to publish a new version of the function after updating the code.
+     * This has the same effect as calling <a>PublishVersion</a> separately.</p>
      */
     inline bool GetPublish() const{ return m_publish; }
 
     /**
-     * <p>This boolean parameter can be used to request AWS Lambda to update the Lambda
-     * function and publish a version as an atomic operation.</p>
+     * <p>Set to true to publish a new version of the function after updating the code.
+     * This has the same effect as calling <a>PublishVersion</a> separately.</p>
+     */
+    inline bool PublishHasBeenSet() const { return m_publishHasBeenSet; }
+
+    /**
+     * <p>Set to true to publish a new version of the function after updating the code.
+     * This has the same effect as calling <a>PublishVersion</a> separately.</p>
      */
     inline void SetPublish(bool value) { m_publishHasBeenSet = true; m_publish = value; }
 
     /**
-     * <p>This boolean parameter can be used to request AWS Lambda to update the Lambda
-     * function and publish a version as an atomic operation.</p>
+     * <p>Set to true to publish a new version of the function after updating the code.
+     * This has the same effect as calling <a>PublishVersion</a> separately.</p>
      */
     inline UpdateFunctionCodeRequest& WithPublish(bool value) { SetPublish(value); return *this;}
 
 
     /**
-     * <p>This boolean parameter can be used to test your request to AWS Lambda to
-     * update the Lambda function and publish a version as an atomic operation. It will
-     * do all necessary computation and validation of your code but will not upload it
-     * or a publish a version. Each time this operation is invoked, the
-     * <code>CodeSha256</code> hash value the provided code will also be computed and
-     * returned in the response.</p>
+     * <p>Set to true to validate the request parameters and access permissions without
+     * modifying the function code.</p>
      */
     inline bool GetDryRun() const{ return m_dryRun; }
 
     /**
-     * <p>This boolean parameter can be used to test your request to AWS Lambda to
-     * update the Lambda function and publish a version as an atomic operation. It will
-     * do all necessary computation and validation of your code but will not upload it
-     * or a publish a version. Each time this operation is invoked, the
-     * <code>CodeSha256</code> hash value the provided code will also be computed and
-     * returned in the response.</p>
+     * <p>Set to true to validate the request parameters and access permissions without
+     * modifying the function code.</p>
+     */
+    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
+
+    /**
+     * <p>Set to true to validate the request parameters and access permissions without
+     * modifying the function code.</p>
      */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
 
     /**
-     * <p>This boolean parameter can be used to test your request to AWS Lambda to
-     * update the Lambda function and publish a version as an atomic operation. It will
-     * do all necessary computation and validation of your code but will not upload it
-     * or a publish a version. Each time this operation is invoked, the
-     * <code>CodeSha256</code> hash value the provided code will also be computed and
-     * returned in the response.</p>
+     * <p>Set to true to validate the request parameters and access permissions without
+     * modifying the function code.</p>
      */
     inline UpdateFunctionCodeRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline UpdateFunctionCodeRequest& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline UpdateFunctionCodeRequest& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
+
+    /**
+     * <p>Only update the function if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a function that has changed since you last
+     * read it.</p>
+     */
+    inline UpdateFunctionCodeRequest& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
 
   private:
 
     Aws::String m_functionName;
     bool m_functionNameHasBeenSet;
 
-    Aws::Utils::ByteBuffer m_zipFile;
+    Aws::Utils::CryptoBuffer m_zipFile;
     bool m_zipFileHasBeenSet;
 
     Aws::String m_s3Bucket;
@@ -382,6 +444,9 @@ namespace Model
 
     bool m_dryRun;
     bool m_dryRunHasBeenSet;
+
+    Aws::String m_revisionId;
+    bool m_revisionIdHasBeenSet;
   };
 
 } // namespace Model

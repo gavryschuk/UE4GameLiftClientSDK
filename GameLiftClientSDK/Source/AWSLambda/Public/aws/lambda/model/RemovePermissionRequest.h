@@ -31,15 +31,12 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/RemovePermissionRequest">AWS
-   * API Reference</a></p>
    */
   class AWS_LAMBDA_API RemovePermissionRequest : public LambdaRequest
   {
   public:
     RemovePermissionRequest();
-    
+
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
     // Note: this is not true for response, multiple operations may have the same response name,
@@ -52,93 +49,114 @@ namespace Model
 
 
     /**
-     * <p>Lambda function whose resource policy you want to remove a permission
-     * from.</p> <p> You can specify a function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline const Aws::String& GetFunctionName() const{ return m_functionName; }
 
     /**
-     * <p>Lambda function whose resource policy you want to remove a permission
-     * from.</p> <p> You can specify a function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
+     */
+    inline bool FunctionNameHasBeenSet() const { return m_functionNameHasBeenSet; }
+
+    /**
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
     /**
-     * <p>Lambda function whose resource policy you want to remove a permission
-     * from.</p> <p> You can specify a function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
 
     /**
-     * <p>Lambda function whose resource policy you want to remove a permission
-     * from.</p> <p> You can specify a function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
 
     /**
-     * <p>Lambda function whose resource policy you want to remove a permission
-     * from.</p> <p> You can specify a function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline RemovePermissionRequest& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
 
     /**
-     * <p>Lambda function whose resource policy you want to remove a permission
-     * from.</p> <p> You can specify a function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline RemovePermissionRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
 
     /**
-     * <p>Lambda function whose resource policy you want to remove a permission
-     * from.</p> <p> You can specify a function name (for example,
-     * <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the
-     * function (for example,
-     * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
-     * also allows you to specify a partial ARN (for example,
-     * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64
-     * characters in length. </p>
+     * <p>The name of the Lambda function, version, or alias.</p> <p class="title">
+     * <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>my-function</code> (name-only), <code>my-function:v1</code> (with
+     * alias).</p> </li> <li> <p> <b>Function ARN</b> -
+     * <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p>
+     * </li> <li> <p> <b>Partial ARN</b> -
+     * <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can
+     * append a version number or alias to any of the formats. The length constraint
+     * applies only to the full ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline RemovePermissionRequest& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
 
@@ -147,6 +165,11 @@ namespace Model
      * <p>Statement ID of the permission to remove.</p>
      */
     inline const Aws::String& GetStatementId() const{ return m_statementId; }
+
+    /**
+     * <p>Statement ID of the permission to remove.</p>
+     */
+    inline bool StatementIdHasBeenSet() const { return m_statementIdHasBeenSet; }
 
     /**
      * <p>Statement ID of the permission to remove.</p>
@@ -180,60 +203,109 @@ namespace Model
 
 
     /**
-     * <p>You can specify this optional parameter to remove permission associated with
-     * a specific function version or function alias. If you don't specify this
-     * parameter, the API removes permission associated with the unqualified function
-     * ARN.</p>
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
      */
     inline const Aws::String& GetQualifier() const{ return m_qualifier; }
 
     /**
-     * <p>You can specify this optional parameter to remove permission associated with
-     * a specific function version or function alias. If you don't specify this
-     * parameter, the API removes permission associated with the unqualified function
-     * ARN.</p>
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
+     */
+    inline bool QualifierHasBeenSet() const { return m_qualifierHasBeenSet; }
+
+    /**
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
      */
     inline void SetQualifier(const Aws::String& value) { m_qualifierHasBeenSet = true; m_qualifier = value; }
 
     /**
-     * <p>You can specify this optional parameter to remove permission associated with
-     * a specific function version or function alias. If you don't specify this
-     * parameter, the API removes permission associated with the unqualified function
-     * ARN.</p>
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
      */
     inline void SetQualifier(Aws::String&& value) { m_qualifierHasBeenSet = true; m_qualifier = std::move(value); }
 
     /**
-     * <p>You can specify this optional parameter to remove permission associated with
-     * a specific function version or function alias. If you don't specify this
-     * parameter, the API removes permission associated with the unqualified function
-     * ARN.</p>
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
      */
     inline void SetQualifier(const char* value) { m_qualifierHasBeenSet = true; m_qualifier.assign(value); }
 
     /**
-     * <p>You can specify this optional parameter to remove permission associated with
-     * a specific function version or function alias. If you don't specify this
-     * parameter, the API removes permission associated with the unqualified function
-     * ARN.</p>
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
      */
     inline RemovePermissionRequest& WithQualifier(const Aws::String& value) { SetQualifier(value); return *this;}
 
     /**
-     * <p>You can specify this optional parameter to remove permission associated with
-     * a specific function version or function alias. If you don't specify this
-     * parameter, the API removes permission associated with the unqualified function
-     * ARN.</p>
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
      */
     inline RemovePermissionRequest& WithQualifier(Aws::String&& value) { SetQualifier(std::move(value)); return *this;}
 
     /**
-     * <p>You can specify this optional parameter to remove permission associated with
-     * a specific function version or function alias. If you don't specify this
-     * parameter, the API removes permission associated with the unqualified function
-     * ARN.</p>
+     * <p>Specify a version or alias to remove permissions from a published version of
+     * the function.</p>
      */
     inline RemovePermissionRequest& WithQualifier(const char* value) { SetQualifier(value); return *this;}
+
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline RemovePermissionRequest& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline RemovePermissionRequest& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
+
+    /**
+     * <p>Only update the policy if the revision ID matches the ID that's specified.
+     * Use this option to avoid modifying a policy that has changed since you last read
+     * it.</p>
+     */
+    inline RemovePermissionRequest& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
 
   private:
 
@@ -245,6 +317,9 @@ namespace Model
 
     Aws::String m_qualifier;
     bool m_qualifierHasBeenSet;
+
+    Aws::String m_revisionId;
+    bool m_revisionIdHasBeenSet;
   };
 
 } // namespace Model

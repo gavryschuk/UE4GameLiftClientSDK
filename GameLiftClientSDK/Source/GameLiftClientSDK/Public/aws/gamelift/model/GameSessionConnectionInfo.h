@@ -27,6 +27,7 @@ namespace Utils
 namespace Json
 {
   class JsonValue;
+  class JsonView;
 } // namespace Json
 } // namespace Utils
 namespace GameLift
@@ -49,56 +50,63 @@ namespace Model
   {
   public:
     GameSessionConnectionInfo();
-    GameSessionConnectionInfo(const Aws::Utils::Json::JsonValue& jsonValue);
-    GameSessionConnectionInfo& operator=(const Aws::Utils::Json::JsonValue& jsonValue);
+    GameSessionConnectionInfo(Aws::Utils::Json::JsonView jsonValue);
+    GameSessionConnectionInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     Aws::Utils::Json::JsonValue Jsonize() const;
 
 
     /**
      * <p>Amazon Resource Name (<a
-     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
      * that is assigned to a game session and uniquely identifies it.</p>
      */
     inline const Aws::String& GetGameSessionArn() const{ return m_gameSessionArn; }
 
     /**
      * <p>Amazon Resource Name (<a
-     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * that is assigned to a game session and uniquely identifies it.</p>
+     */
+    inline bool GameSessionArnHasBeenSet() const { return m_gameSessionArnHasBeenSet; }
+
+    /**
+     * <p>Amazon Resource Name (<a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
      * that is assigned to a game session and uniquely identifies it.</p>
      */
     inline void SetGameSessionArn(const Aws::String& value) { m_gameSessionArnHasBeenSet = true; m_gameSessionArn = value; }
 
     /**
      * <p>Amazon Resource Name (<a
-     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
      * that is assigned to a game session and uniquely identifies it.</p>
      */
     inline void SetGameSessionArn(Aws::String&& value) { m_gameSessionArnHasBeenSet = true; m_gameSessionArn = std::move(value); }
 
     /**
      * <p>Amazon Resource Name (<a
-     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
      * that is assigned to a game session and uniquely identifies it.</p>
      */
     inline void SetGameSessionArn(const char* value) { m_gameSessionArnHasBeenSet = true; m_gameSessionArn.assign(value); }
 
     /**
      * <p>Amazon Resource Name (<a
-     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
      * that is assigned to a game session and uniquely identifies it.</p>
      */
     inline GameSessionConnectionInfo& WithGameSessionArn(const Aws::String& value) { SetGameSessionArn(value); return *this;}
 
     /**
      * <p>Amazon Resource Name (<a
-     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
      * that is assigned to a game session and uniquely identifies it.</p>
      */
     inline GameSessionConnectionInfo& WithGameSessionArn(Aws::String&& value) { SetGameSessionArn(std::move(value)); return *this;}
 
     /**
      * <p>Amazon Resource Name (<a
-     * href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
      * that is assigned to a game session and uniquely identifies it.</p>
      */
     inline GameSessionConnectionInfo& WithGameSessionArn(const char* value) { SetGameSessionArn(value); return *this;}
@@ -109,6 +117,12 @@ namespace Model
      * an app needs both the IP address and port number.</p>
      */
     inline const Aws::String& GetIpAddress() const{ return m_ipAddress; }
+
+    /**
+     * <p>IP address of the game session. To connect to a Amazon GameLift game server,
+     * an app needs both the IP address and port number.</p>
+     */
+    inline bool IpAddressHasBeenSet() const { return m_ipAddressHasBeenSet; }
 
     /**
      * <p>IP address of the game session. To connect to a Amazon GameLift game server,
@@ -147,11 +161,42 @@ namespace Model
     inline GameSessionConnectionInfo& WithIpAddress(const char* value) { SetIpAddress(value); return *this;}
 
 
+    
+    inline const Aws::String& GetDnsName() const{ return m_dnsName; }
+
+    
+    inline bool DnsNameHasBeenSet() const { return m_dnsNameHasBeenSet; }
+
+    
+    inline void SetDnsName(const Aws::String& value) { m_dnsNameHasBeenSet = true; m_dnsName = value; }
+
+    
+    inline void SetDnsName(Aws::String&& value) { m_dnsNameHasBeenSet = true; m_dnsName = std::move(value); }
+
+    
+    inline void SetDnsName(const char* value) { m_dnsNameHasBeenSet = true; m_dnsName.assign(value); }
+
+    
+    inline GameSessionConnectionInfo& WithDnsName(const Aws::String& value) { SetDnsName(value); return *this;}
+
+    
+    inline GameSessionConnectionInfo& WithDnsName(Aws::String&& value) { SetDnsName(std::move(value)); return *this;}
+
+    
+    inline GameSessionConnectionInfo& WithDnsName(const char* value) { SetDnsName(value); return *this;}
+
+
     /**
      * <p>Port number for the game session. To connect to a Amazon GameLift game
      * server, an app needs both the IP address and port number.</p>
      */
     inline int GetPort() const{ return m_port; }
+
+    /**
+     * <p>Port number for the game session. To connect to a Amazon GameLift game
+     * server, an app needs both the IP address and port number.</p>
+     */
+    inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
 
     /**
      * <p>Port number for the game session. To connect to a Amazon GameLift game
@@ -171,6 +216,12 @@ namespace Model
      * the original matchmaking request. </p>
      */
     inline const Aws::Vector<MatchedPlayerSession>& GetMatchedPlayerSessions() const{ return m_matchedPlayerSessions; }
+
+    /**
+     * <p>Collection of player session IDs, one for each player ID that was included in
+     * the original matchmaking request. </p>
+     */
+    inline bool MatchedPlayerSessionsHasBeenSet() const { return m_matchedPlayerSessionsHasBeenSet; }
 
     /**
      * <p>Collection of player session IDs, one for each player ID that was included in
@@ -215,6 +266,9 @@ namespace Model
 
     Aws::String m_ipAddress;
     bool m_ipAddressHasBeenSet;
+
+    Aws::String m_dnsName;
+    bool m_dnsNameHasBeenSet;
 
     int m_port;
     bool m_portHasBeenSet;

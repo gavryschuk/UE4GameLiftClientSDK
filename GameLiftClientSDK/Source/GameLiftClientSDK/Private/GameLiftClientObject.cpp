@@ -2,6 +2,7 @@
 
 #include "GameLiftClientObject.h"
 #include "aws/core/client/ClientConfiguration.h"
+#include <aws/core/auth/AWSCredentialsProvider.h>
 
 
 

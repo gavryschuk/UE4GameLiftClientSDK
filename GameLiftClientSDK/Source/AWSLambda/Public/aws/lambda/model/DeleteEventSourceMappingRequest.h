@@ -27,15 +27,12 @@ namespace Model
 {
 
   /**
-   * <p/><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteEventSourceMappingRequest">AWS
-   * API Reference</a></p>
    */
   class AWS_LAMBDA_API DeleteEventSourceMappingRequest : public LambdaRequest
   {
   public:
     DeleteEventSourceMappingRequest();
-    
+
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
     // Note: this is not true for response, multiple operations may have the same response name,
@@ -46,37 +43,42 @@ namespace Model
 
 
     /**
-     * <p>The event source mapping ID.</p>
+     * <p>The identifier of the event source mapping.</p>
      */
     inline const Aws::String& GetUUID() const{ return m_uUID; }
 
     /**
-     * <p>The event source mapping ID.</p>
+     * <p>The identifier of the event source mapping.</p>
+     */
+    inline bool UUIDHasBeenSet() const { return m_uUIDHasBeenSet; }
+
+    /**
+     * <p>The identifier of the event source mapping.</p>
      */
     inline void SetUUID(const Aws::String& value) { m_uUIDHasBeenSet = true; m_uUID = value; }
 
     /**
-     * <p>The event source mapping ID.</p>
+     * <p>The identifier of the event source mapping.</p>
      */
     inline void SetUUID(Aws::String&& value) { m_uUIDHasBeenSet = true; m_uUID = std::move(value); }
 
     /**
-     * <p>The event source mapping ID.</p>
+     * <p>The identifier of the event source mapping.</p>
      */
     inline void SetUUID(const char* value) { m_uUIDHasBeenSet = true; m_uUID.assign(value); }
 
     /**
-     * <p>The event source mapping ID.</p>
+     * <p>The identifier of the event source mapping.</p>
      */
     inline DeleteEventSourceMappingRequest& WithUUID(const Aws::String& value) { SetUUID(value); return *this;}
 
     /**
-     * <p>The event source mapping ID.</p>
+     * <p>The identifier of the event source mapping.</p>
      */
     inline DeleteEventSourceMappingRequest& WithUUID(Aws::String&& value) { SetUUID(std::move(value)); return *this;}
 
     /**
-     * <p>The event source mapping ID.</p>
+     * <p>The identifier of the event source mapping.</p>
      */
     inline DeleteEventSourceMappingRequest& WithUUID(const char* value) { SetUUID(value); return *this;}
 
