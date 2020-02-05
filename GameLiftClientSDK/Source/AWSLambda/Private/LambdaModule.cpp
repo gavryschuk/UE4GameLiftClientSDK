@@ -1,13 +1,13 @@
-#include "AWSLambdaModulePrivatePCH.h"
-#include "AWSLambdaModule.h"
+#include "LambdaModulePrivatePCH.h"
+#include "LambdaModule.h"
 #include "GameLiftClientSDK/Public/GameLiftClientGlobals.h"
 #include "IPluginManager.h"
 
-#define LOCTEXT_NAMESPACE "FAWSLambdaModule"
+#define LOCTEXT_NAMESPACE "FLambdaModule"
 
-void* FAWSLambdaModule::AWSLambdaLibraryHandle = nullptr;
+void* FLambdaModule::LambdaLibraryHandle = nullptr;
 
-void FAWSLambdaModule::StartupModule()
+void FLambdaModule::StartupModule()
 {
 #if PLATFORM_WINDOWS && PLATFORM_64BITS
 	LOG_NORMAL("Starting CognitoIdentity Module...");
@@ -18,25 +18,25 @@ void FAWSLambdaModule::StartupModule()
 	const FString ThirdPartyDir = FPaths::Combine(*BaseDir, TEXT("ThirdParty"), TEXT("GameLiftClientSDK"), TEXT("Win64"));
 	LOG_NORMAL(FString::Printf(TEXT("ThirdParty directory is %s"), *ThirdPartyDir));
 
-	static const FString AWSLambdaDLLName = "aws-cpp-sdk-lambda";
-	const bool bDependencyLoaded = LoadDependency(ThirdPartyDir, AWSLambdaDLLName, AWSLambdaLibraryHandle);
+	static const FString LambdaDLLName = "aws-cpp-sdk-lambda";
+	const bool bDependencyLoaded = LoadDependency(ThirdPartyDir, LambdaDLLName, LambdaLibraryHandle);
 	if (bDependencyLoaded == false)
 	{
 		FFormatNamedArguments Arguments;
-		Arguments.Add(TEXT("Name"), FText::FromString(AWSLambdaDLLName));
+		Arguments.Add(TEXT("Name"), FText::FromString(LambdaDLLName));
 		FMessageDialog::Open(EAppMsgType::Ok, FText::Format(LOCTEXT("LoadDependencyError", "Failed to load {Name}. Plugin will not be functional"), Arguments));
-		FreeDependency(AWSLambdaLibraryHandle);
+		FreeDependency(LambdaLibraryHandle);
 	}
 #endif
 }
 
-void FAWSLambdaModule::ShutdownModule()
+void FLambdaModule::ShutdownModule()
 {
-	FreeDependency(AWSLambdaLibraryHandle);
+	FreeDependency(LambdaLibraryHandle);
 	LOG_NORMAL("Shutting down CognitoIdentity Module...");
 }
 
-bool FAWSLambdaModule::LoadDependency(const FString& Dir, const FString& Name, void*& Handle)
+bool FLambdaModule::LoadDependency(const FString& Dir, const FString& Name, void*& Handle)
 {
 	FString Lib = Name + TEXT(".") + FPlatformProcess::GetModuleExtension();
 	FString Path = Dir.IsEmpty() ? *Lib : FPaths::Combine(*Dir, *Lib);
@@ -53,7 +53,7 @@ bool FAWSLambdaModule::LoadDependency(const FString& Dir, const FString& Name, v
 	return true;
 }
 
-void FAWSLambdaModule::FreeDependency(void*& Handle)
+void FLambdaModule::FreeDependency(void*& Handle)
 {
 #if !PLATFORM_LINUX
 	if (Handle != nullptr)
@@ -66,4 +66,4 @@ void FAWSLambdaModule::FreeDependency(void*& Handle)
 
 #undef LOCTEXT_NAMESPACE
 
-IMPLEMENT_MODULE(FAWSLambdaModule, AWSLambda);
+IMPLEMENT_MODULE(FLambdaModule, Lambda);

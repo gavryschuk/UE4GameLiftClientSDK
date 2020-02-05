@@ -9,8 +9,6 @@
 #include "aws/gamelift/GameLiftClient.h"
 #include "aws/gamelift/model/CreateGameSessionResult.h"
 #include "aws/core/auth/AWSCredentialsProvider.h"
-
-//#include <aws/lambda/LambdaClient.h>
 //
 
 #include "GameLiftClientApi.generated.h"

@@ -36,7 +36,7 @@
       "LoadingPhase": "PreDefault"
     },
     {
-      "Name": "AWSLambda",
+      "Name": "Lambda",
       "Type": "Runtime",
       "LoadingPhase": "PreDefault"
     }

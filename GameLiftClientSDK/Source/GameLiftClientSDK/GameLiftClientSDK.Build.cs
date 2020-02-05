@@ -9,7 +9,7 @@ public class GameLiftClientSDK : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore", "CognitoIdentity", "AWSLambda", "AWSIdentityManagement" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore", "CognitoIdentity", "AWSIdentityManagement", "Lambda" });
 
         PublicDefinitions.Add("USE_IMPORT_EXPORT");
         PublicDefinitions.Add("USE_WINDOWS_DLL_SEMANTICS");
