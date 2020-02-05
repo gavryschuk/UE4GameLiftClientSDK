@@ -27,17 +27,17 @@ bool ULambdaFunction::Call()
 #if WITH_AWS_LAMBDA
 	if (LambdaClient && LambdaFunctionName.Len() > 0)
 	{
-		LOG_NORMAL("Preparing to request Lambda...");
+		LOG_LAMBDA_NORMAL("Preparing to request Lambda...");
 
 		if (OnLambdaFunctionSuccess.IsBound() == false)
 		{
-			LOG_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
+			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
 			return false;
 		}
 
 		if (OnLambdaFunctionFailed.IsBound() == false)
 		{
-			LOG_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
+			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
 			return false;
 		}
 
@@ -48,11 +48,11 @@ bool ULambdaFunction::Call()
 		Aws::Lambda::InvokeResponseReceivedHandler Handler;
 		Handler = std::bind(&ULambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 
-		LOG_NORMAL("Lambda Request is in progress...");
+		LOG_LAMBDA_NORMAL("Lambda Request is in progress...");
 		LambdaClient->InvokeAsync(InvokeRequest, Handler);
 		return true;
 	}
-	LOG_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
+	LOG_LAMBDA_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
 #endif
 	return false;
 }
@@ -62,9 +62,9 @@ void ULambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client, co
 #if WITH_AWS_LAMBDA
 	if (Outcome.IsSuccess())
 	{
-		LOG_NORMAL("Received OnFunctionCall with Success outcome.");
+		LOG_LAMBDA_NORMAL("Received OnFunctionCall with Success outcome.");
 
-		LOG_NORMAL("Parsing result....");
+		LOG_LAMBDA_NORMAL("Parsing result....");
 		auto& Result = Outcome.GetResult();
 		
 		Aws::Utils::Json::JsonValue ResultPayload{ ((Aws::Lambda::Model::InvokeResult&)Result).GetPayload() };
@@ -77,7 +77,7 @@ void ULambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client, co
 			auto Value = FString( item.second.AsString().c_str());
 			if (item.second.IsIntegerType()) Value = FString::FromInt(item.second.AsInteger());
 			ResponseArray.Add(FLambdaParamsItem(Key,Value));
-			LOG_NORMAL(FString::Printf(TEXT("%s - %s"), *Key, *Value));
+			LOG_LAMBDA_NORMAL(FString::Printf(TEXT("%s - %s"), *Key, *Value));
 		}
 
 		const TArray<FLambdaParamsItem> ResponseArrayCopy = TArray<FLambdaParamsItem>(ResponseArray);
@@ -86,7 +86,7 @@ void ULambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client, co
 	else
 	{
 		const FString MyErrorMessage = FString(Outcome.GetError().GetMessage().c_str());
-		LOG_ERROR("Received Lambda OnFunctionCall with failed outcome. Error: " + MyErrorMessage);
+		LOG_LAMBDA_ERROR("Received Lambda OnFunctionCall with failed outcome. Error: " + MyErrorMessage);
 		OnLambdaFunctionFailed.Broadcast(MyErrorMessage);
 	}
 #endif

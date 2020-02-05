@@ -18,19 +18,31 @@ private:
 #if WITH_AWS_LAMBDA
 	Aws::Lambda::LambdaClient* LambdaClient;
 #endif
-	void Internal_InitLambda(const FString& AccountID, const FString& CognitoIdentityPoolId);
+	void Internal_InitLambdaWithUsersPool(const FString& AccessKey, const FString& Secret, const FString& Region);
+	void Internal_InitLambdaWithIdentityPool(const FString& AccountID, const FString& CognitoIdentityPoolId, const FString& Region);
 
 public:
 
 	/**
-	* public static ULambdaObject::CreateLambdaObject
-	* Creates a LambdaObject. This function must be called first before accessing any Lambda client functions.
+	* public static ULambdaObject::CreateLambdaObjectWithUsersPool
+	* Creates a LambdaObject with Cognito Users Pool. This function must be called first before accessing any Lambda client functions.
+	* @param AccessKey [const FString&] AccessKey of your AWS user. @See http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html
+	* @param Secret [const FString&] SecretKey of your AWS user. @See http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html
+	* @param Region [const FString&] Default is set to us-east-1 (North Virginia).
+	* @return [ULambdaObject*] Returns UGameLiftClientObject*. Use this to create game sessions, player sessions etc.
+	**/
+	UFUNCTION(BlueprintCallable, Category = "Lambda Client Object")
+	static ULambdaObject* CreateLambdaObjectWithUsersPool(const FString& AccessKey, const FString& Secret, const FString& Region = "us-east-1");
+
+	/**
+	* public static ULambdaObject::CreateLambdaObjectWithIdentityPool
+	* Creates a LambdaObject with Cognito Identity Pool. This function must be called first before accessing any Lambda client functions.
 	* @param AccountID [const FString&] AccountID of your AWS account. @See https://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html
 	* @param CognitoIdentityPoolId [const FString&] Cognito Identity Pool Id. @See https://docs.aws.amazon.com/cognito/latest/developerguide/identity-pools.html
 	* @return [ULambdaObject*] Returns UGameLiftClientObject*. Use this to create game sessions, player sessions etc.
 	**/
 	UFUNCTION(BlueprintCallable, Category = "Lambda Client Object")
-	static ULambdaObject* CreateLambdaObject(const FString& AccountID, const FString& CognitoIdentityPoolId);
+	static ULambdaObject* CreateLambdaObjectWithIdentityPool(const FString& AccountID, const FString& CognitoIdentityPoolId, const FString& Region = "us-east-1");
 
 	/**
 	* public ULambdaFunction::CreateLambdaFunction
