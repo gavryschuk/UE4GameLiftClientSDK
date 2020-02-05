@@ -25,7 +25,7 @@ public:
 
 	/**
 	* public static ULambdaObject::CreateLambdaObjectWithUsersPool
-	* Creates a LambdaObject with Cognito Users Pool. This function must be called first before accessing any Lambda client functions.
+	* Creates a LambdaObject with AWS Account Users Pool. This function must be called first before accessing any Lambda client functions.
 	* @param AccessKey [const FString&] AccessKey of your AWS user. @See http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html
 	* @param Secret [const FString&] SecretKey of your AWS user. @See http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html
 	* @param Region [const FString&] Default is set to us-east-1 (North Virginia).
