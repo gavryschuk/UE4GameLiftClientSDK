@@ -57,6 +57,57 @@ bool ULambdaFunction::Call()
 	return false;
 }
 
+bool ULambdaFunction::CallWithInputParams(const TArray<FLambdaParamsItem>& RequestParams)
+{
+#if WITH_AWS_LAMBDA
+	if (LambdaClient && LambdaFunctionName.Len() > 0)
+	{
+		LOG_LAMBDA_NORMAL("Preparing to request Lambda...");
+
+		if (OnLambdaFunctionSuccess.IsBound() == false)
+		{
+			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
+			return false;
+		}
+
+		if (OnLambdaFunctionFailed.IsBound() == false)
+		{
+			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
+			return false;
+		}
+
+		Aws::Lambda::Model::InvokeRequest InvokeRequest;
+		InvokeRequest.SetFunctionName(TCHAR_TO_UTF8(*LambdaFunctionName));
+		InvokeRequest.SetInvocationType(Aws::Lambda::Model::InvocationType::RequestResponse);
+
+		if (RequestParams.Num() > 0)
+		{
+			LOG_LAMBDA_NORMAL("Request Params detected. Adding Params to request...");
+
+			std::shared_ptr<Aws::IOStream> Payload = Aws::MakeShared<Aws::StringStream>("LambdaFunctionRequest");
+			Aws::Utils::Json::JsonValue JsonPayload;
+
+			for (auto& item : RequestParams) {
+				JsonPayload.WithString(TCHAR_TO_UTF8(*item.Key), TCHAR_TO_UTF8(*item.Value));
+			}
+
+			*Payload << JsonPayload.View().WriteReadable();
+			InvokeRequest.SetBody(Payload);
+			InvokeRequest.SetContentType("application/javascript");
+	}
+
+		Aws::Lambda::InvokeResponseReceivedHandler Handler;
+		Handler = std::bind(&ULambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+
+		LOG_LAMBDA_NORMAL("Lambda Request is in progress...");
+		LambdaClient->InvokeAsync(InvokeRequest, Handler);
+		return true;
+}
+	LOG_LAMBDA_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
+#endif
+	return false;
+}
+
 void ULambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client, const Aws::Lambda::Model::InvokeRequest& Request, const Aws::Lambda::Model::InvokeOutcome& Outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& Context)
 {
 #if WITH_AWS_LAMBDA
