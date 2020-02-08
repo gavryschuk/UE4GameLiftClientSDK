@@ -4,9 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-
-#include <aws/lambda/LambdaClient.h>
-
+#if WITH_AWS_LAMBDA
+#include "aws/lambda/LambdaClient.h"
+#endif
 #include "LambdaApi.generated.h"
 
 

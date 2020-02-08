@@ -9,11 +9,16 @@ public class AWSIdentityManagement : ModuleRules
 		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects" });
-		
-		// This is required to fix a warning for Unreal Engine 4.21 and later
+
+        PublicDefinitions.Add("USE_IMPORT_EXPORT");
+        PublicDefinitions.Add("USE_WINDOWS_DLL_SEMANTICS");
+
+        // This is required to fix a warning for Unreal Engine 4.21 and later
         PrivatePCHHeaderFile = "Private/AWSIdentityManagementPrivatePCH.h";
 
-		string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));
+        bEnableExceptions = true;
+
+        string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));
         string ThirdPartyPath = System.IO.Path.Combine(BaseDirectory, "ThirdParty", "GameLiftClientSDK", Target.Platform.ToString());
         bool bIsThirdPartyPathValid = System.IO.Directory.Exists(ThirdPartyPath);
 

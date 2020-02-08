@@ -4,9 +4,7 @@
 #include "LambdaGlobals.h"
 
 #if WITH_AWS_LAMBDA
-#include <aws/core/Aws.h>
 #include <aws/core/utils/Outcome.h>
-#include <aws/core/utils/HashingUtils.h>
 #include <aws/lambda/LambdaClient.h>
 #include <aws/lambda/model/InvokeRequest.h>
 #include <aws/lambda/model/InvokeResult.h>
