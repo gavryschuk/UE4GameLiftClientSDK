@@ -1,7 +1,7 @@
 {
   "FileVersion": 3,
   "Version": 1,
-  "VersionName": "1.7.205",
+  "VersionName": "1.7.266",
   "FriendlyName": "GameLift Client SDK",
   "Description": "GameLift plugin for creating Game Sessions, Player Sessions etc.",
   "Category": "YetiTech Studios",
@@ -26,7 +26,7 @@
       "LoadingPhase": "PreDefault"
     },
     {
-      "Name": "CognitoIdentity",
+      "Name": "AWSCognitoIdentity",
       "Type": "Runtime",
       "LoadingPhase": "PreDefault"
     },
@@ -36,7 +36,7 @@
       "LoadingPhase": "PreDefault"
     },
     {
-      "Name": "Lambda",
+      "Name": "AWSLambda",
       "Type": "Runtime",
       "LoadingPhase": "PreDefault"
     }

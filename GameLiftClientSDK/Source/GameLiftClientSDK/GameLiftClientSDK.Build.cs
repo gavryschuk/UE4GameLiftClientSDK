@@ -12,7 +12,7 @@ public class GameLiftClientSDK : ModuleRules
         PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
 
-        PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore", "CognitoIdentity", "AWSIdentityManagement", "Lambda" });
+        PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore", "AWSCognitoIdentity", "AWSIdentityManagement", "AWSLambda" });
 
         PublicDefinitions.Add("USE_IMPORT_EXPORT");
         PublicDefinitions.Add("USE_WINDOWS_DLL_SEMANTICS");
