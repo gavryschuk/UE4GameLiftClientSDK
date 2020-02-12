@@ -1,3 +1,25 @@
+# BRANCH Lambda
+
+Current branch has AWSLambda functionalty added to the plugin.
+As the highest priority this is needed to manage game sessions for GameLift Server through lambda for security reasons.
+You can find the described AWS lambda function here: [gameLiftPlayerSessionLambda](https://github.com/gavryschuk/aws-lambdas/tree/gamelift-get-active-player-session)
+Also might be used to call Analytics Data Lambdas for your project.
+
+The class structure and design/architecture is the same as GameLiftClientSDK API.
+
+Very convinient to be used as an addition to existing GameLift Client SDK.
+Blueprints examples:
+
+- [General Lambda Object setup and Function Call](https://monosnap.com/file/64PG4xeAg2i16xfC38N5JsyQINleP1)
+- [Provide Input params to the function](https://monosnap.com/file/xYstckjvqBolmEVLOkc2WTqv00TXIh)
+- [Lambda Error Handler](https://monosnap.com/file/1XfUSfdDGVo4pbABeqguF1waHhw4ff)
+- [Lambda Succeed. Parsing needed params](https://monosnap.com/file/gf3WQ19TugcyBLfhQ40MzPmtWkvXTz)
+-  In the current example Lambda already searched for the active available game sessions (if there were none->created one). Generated Player session for that game session and returned a result. [Using previously parsed **ip adress** and **port** to connect to GameLift Server](https://monosnap.com/file/2BElF5XMNUEfkIwM0YWFK2WW23n2hx?idx=0&total=1064)
+
+
+To get general information how to setup plugin -> please, read further...
+
+
 # GameLift Client SDK for Unreal Engine 4
 
 ![](https://pbs.twimg.com/profile_images/674912463456894981/zpsLHeRC.png)![](https://pbs.twimg.com/profile_images/675419785178382336/G8JCcref.png)![](https://www.cloudwards.net/wp-content/uploads/2015/10/AWS-logo.png)
