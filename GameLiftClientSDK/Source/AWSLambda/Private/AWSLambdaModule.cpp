@@ -10,7 +10,7 @@ void* FAWSLambdaModule::AWSLambdaLibraryHandle = nullptr;
 void FAWSLambdaModule::StartupModule()
 {
 #if PLATFORM_WINDOWS && PLATFORM_64BITS
-	LOG_NORMAL("Starting CognitoIdentity Module...");
+	LOG_NORMAL("Starting Lambda Module...");
 
 	const FString BaseDir = IPluginManager::Get().FindPlugin("GameLiftClientSDK")->GetBaseDir();
 	LOG_NORMAL(FString::Printf(TEXT("Base directory is %s"), *BaseDir));

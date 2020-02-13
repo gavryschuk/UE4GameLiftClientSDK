@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AWSLambdaApi.h"
-#include "AWSLambdaGlobals.h"
+#include "GameLiftClientSDK/Public/GameLiftClientGlobals.h"
 
 #if WITH_AWS_LAMBDA
 #include <aws/core/utils/Outcome.h>
@@ -25,17 +25,17 @@ bool UAWSLambdaFunction::Call()
 #if WITH_AWS_LAMBDA
 	if (LambdaClient && LambdaFunctionName.Len() > 0)
 	{
-		LOG_LAMBDA_NORMAL("Preparing to request Lambda...");
+		LOG_NORMAL("Preparing to request Lambda...");
 
 		if (OnAWSLambdaFunctionSuccess.IsBound() == false)
 		{
-			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
+			LOG_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
 			return false;
 		}
 
 		if (OnAWSLambdaFunctionFailed.IsBound() == false)
 		{
-			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
+			LOG_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
 			return false;
 		}
 
@@ -46,11 +46,11 @@ bool UAWSLambdaFunction::Call()
 		Aws::Lambda::InvokeResponseReceivedHandler Handler;
 		Handler = std::bind(&UAWSLambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 
-		LOG_LAMBDA_NORMAL("Lambda Request is in progress...");
+		LOG_NORMAL("Lambda Request is in progress...");
 		LambdaClient->InvokeAsync(InvokeRequest, Handler);
 		return true;
 	}
-	LOG_LAMBDA_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
+	LOG_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
 #endif
 	return false;
 }
@@ -60,17 +60,17 @@ bool UAWSLambdaFunction::CallWithInputParams(const TArray<FAWSLambdaParamsItem>&
 #if WITH_AWS_LAMBDA
 	if (LambdaClient && LambdaFunctionName.Len() > 0)
 	{
-		LOG_LAMBDA_NORMAL("Preparing to request Lambda...");
+		LOG_NORMAL("Preparing to request Lambda...");
 
 		if (OnAWSLambdaFunctionSuccess.IsBound() == false)
 		{
-			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
+			LOG_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
 			return false;
 		}
 
 		if (OnAWSLambdaFunctionFailed.IsBound() == false)
 		{
-			LOG_LAMBDA_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
+			LOG_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
 			return false;
 		}
 
@@ -80,7 +80,7 @@ bool UAWSLambdaFunction::CallWithInputParams(const TArray<FAWSLambdaParamsItem>&
 
 		if (RequestParams.Num() > 0)
 		{
-			LOG_LAMBDA_NORMAL("Request Params detected. Adding Params to request...");
+			LOG_NORMAL("Request Params detected. Adding Params to request...");
 
 			std::shared_ptr<Aws::IOStream> Payload = Aws::MakeShared<Aws::StringStream>("LambdaFunctionRequest");
 			Aws::Utils::Json::JsonValue JsonPayload;
@@ -97,11 +97,11 @@ bool UAWSLambdaFunction::CallWithInputParams(const TArray<FAWSLambdaParamsItem>&
 		Aws::Lambda::InvokeResponseReceivedHandler Handler;
 		Handler = std::bind(&UAWSLambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 
-		LOG_LAMBDA_NORMAL("Lambda Request is in progress...");
+		LOG_NORMAL("Lambda Request is in progress...");
 		LambdaClient->InvokeAsync(InvokeRequest, Handler);
 		return true;
 }
-	LOG_LAMBDA_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
+	LOG_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
 #endif
 	return false;
 }
@@ -111,9 +111,9 @@ void UAWSLambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client,
 #if WITH_AWS_LAMBDA
 	if (Outcome.IsSuccess())
 	{
-		LOG_LAMBDA_NORMAL("Received OnFunctionCall with Success outcome.");
+		LOG_NORMAL("Received OnFunctionCall with Success outcome.");
 
-		LOG_LAMBDA_NORMAL("Parsing result....");
+		LOG_NORMAL("Parsing result....");
 		auto& Result = Outcome.GetResult();
 		
 		Aws::Utils::Json::JsonValue ResultPayload{ ((Aws::Lambda::Model::InvokeResult&)Result).GetPayload() };
@@ -128,14 +128,14 @@ void UAWSLambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client,
 			auto Value = FString( item.second.AsString().c_str());
 
 			if (Key == "errorMessage") {
-				LOG_LAMBDA_ERROR("Received Lambda OnFunctionCall with Error Message. Error: " + Value);
+				LOG_ERROR("Received Lambda OnFunctionCall with Error Message. Error: " + Value);
 				OnAWSLambdaFunctionFailed.Broadcast(Value);
 				return;
 			}
 
 			if (item.second.IsIntegerType()) Value = FString::FromInt(item.second.AsInteger());
 			ResponseArray.Add(FAWSLambdaParamsItem(Key,Value));
-			LOG_LAMBDA_NORMAL(FString::Printf(TEXT("%s - %s"), *Key, *Value));
+			LOG_NORMAL(FString::Printf(TEXT("%s - %s"), *Key, *Value));
 		}
 
 		const TArray<FAWSLambdaParamsItem> ResponseArrayCopy = TArray<FAWSLambdaParamsItem>(ResponseArray);
@@ -144,7 +144,7 @@ void UAWSLambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client,
 	else
 	{
 		const FString MyErrorMessage = FString(Outcome.GetError().GetMessage().c_str());
-		LOG_LAMBDA_ERROR("Received Lambda OnFunctionCall with failed outcome. Error: " + MyErrorMessage);
+		LOG_ERROR("Received Lambda OnFunctionCall with failed outcome. Error: " + MyErrorMessage);
 		OnAWSLambdaFunctionFailed.Broadcast(MyErrorMessage);
 	}
 #endif
