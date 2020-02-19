@@ -55,10 +55,7 @@ private:
 	static UAWSLambdaFunction* CreateLambdaFunction(FString LambdaFunctionName);
 public:
 	UFUNCTION(BlueprintCallable, Category = "Lambda Function")
-	bool Call();
-
-	UFUNCTION(BlueprintCallable, Category = "Lambda Function")
-	bool CallWithInputParams(const TArray<FAWSLambdaParamsItem>& RequestParams);
+	void Call(const TArray<FAWSLambdaParamsItem>& RequestParams = []);
 
 private:
 	void OnFunctionCall(const Aws::Lambda::LambdaClient* Client, const Aws::Lambda::Model::InvokeRequest& Request, const Aws::Lambda::Model::InvokeOutcome& Outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& Context);

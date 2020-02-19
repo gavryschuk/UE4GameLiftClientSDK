@@ -46,6 +46,16 @@ public class AWSCognitoIdentity : ModuleRules
 			{
 				throw new BuildException("aws-cpp-sdk-cognito-identity.dll not found. Expected in this location: " + AWSCognitoDLLFile);
 			}
-		}
+
+            string BinariesDirectory = System.IO.Path.Combine(BaseDirectory, "Binaries", Target.Platform.ToString());
+            if (!Directory.Exists(BinariesDirectory))
+            {
+                Directory.CreateDirectory(BinariesDirectory);
+            }
+            if (File.Exists(System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-cognito-identity.dll")) == false)
+            {
+                File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-cognito-identity.dll"));
+            }
+        }
 	}
 }

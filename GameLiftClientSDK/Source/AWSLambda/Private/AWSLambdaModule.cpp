@@ -33,7 +33,7 @@ void FAWSLambdaModule::StartupModule()
 void FAWSLambdaModule::ShutdownModule()
 {
 	FreeDependency(AWSLambdaLibraryHandle);
-	LOG_NORMAL("Shutting down CognitoIdentity Module...");
+	LOG_NORMAL("Shutting down Lambda Module...");
 }
 
 bool FAWSLambdaModule::LoadDependency(const FString& Dir, const FString& Name, void*& Handle)

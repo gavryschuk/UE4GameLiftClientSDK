@@ -20,59 +20,12 @@ UAWSLambdaFunction* UAWSLambdaFunction::CreateLambdaFunction(FString LambdaFunct
 	return nullptr;
 }
 
-bool UAWSLambdaFunction::Call()
+void UAWSLambdaFunction::Call(const TArray<FAWSLambdaParamsItem>& RequestParams)
 {
 #if WITH_AWS_LAMBDA
 	if (LambdaClient && LambdaFunctionName.Len() > 0)
 	{
 		LOG_NORMAL("Preparing to request Lambda...");
-
-		if (OnAWSLambdaFunctionSuccess.IsBound() == false)
-		{
-			LOG_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
-			return false;
-		}
-
-		if (OnAWSLambdaFunctionFailed.IsBound() == false)
-		{
-			LOG_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
-			return false;
-		}
-
-		Aws::Lambda::Model::InvokeRequest InvokeRequest;
-		InvokeRequest.SetFunctionName(TCHAR_TO_UTF8(*LambdaFunctionName));
-		InvokeRequest.SetInvocationType(Aws::Lambda::Model::InvocationType::RequestResponse);
-
-		Aws::Lambda::InvokeResponseReceivedHandler Handler;
-		Handler = std::bind(&UAWSLambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-
-		LOG_NORMAL("Lambda Request is in progress...");
-		LambdaClient->InvokeAsync(InvokeRequest, Handler);
-		return true;
-	}
-	LOG_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
-#endif
-	return false;
-}
-
-bool UAWSLambdaFunction::CallWithInputParams(const TArray<FAWSLambdaParamsItem>& RequestParams)
-{
-#if WITH_AWS_LAMBDA
-	if (LambdaClient && LambdaFunctionName.Len() > 0)
-	{
-		LOG_NORMAL("Preparing to request Lambda...");
-
-		if (OnAWSLambdaFunctionSuccess.IsBound() == false)
-		{
-			LOG_ERROR("No functions were bound to OnLambdaFunctionSuccess multi-cast delegate! Aborting Activate.");
-			return false;
-		}
-
-		if (OnAWSLambdaFunctionFailed.IsBound() == false)
-		{
-			LOG_ERROR("No functions were bound to OnLambdaFunctionFailed multi-cast delegate! Aborting Activate.");
-			return false;
-		}
 
 		Aws::Lambda::Model::InvokeRequest InvokeRequest;
 		InvokeRequest.SetFunctionName(TCHAR_TO_UTF8(*LambdaFunctionName));
@@ -92,18 +45,23 @@ bool UAWSLambdaFunction::CallWithInputParams(const TArray<FAWSLambdaParamsItem>&
 			*Payload << JsonPayload.View().WriteReadable();
 			InvokeRequest.SetBody(Payload);
 			InvokeRequest.SetContentType("application/javascript");
-	}
+		}
+
+		// send data without callbacks
+		if (OnAWSLambdaFunctionSuccess.IsBound() == false || OnAWSLambdaFunctionFailed.IsBound() == false) {
+			LOG_NORMAL("At least one callback function is not provided. Lambda calls without callbacks...");
+			LambdaClient->Invoke(InvokeRequest);
+			return;
+		}
 
 		Aws::Lambda::InvokeResponseReceivedHandler Handler;
 		Handler = std::bind(&UAWSLambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 
-		LOG_NORMAL("Lambda Request is in progress...");
+		LOG_NORMAL("Lambda Async call. Callbacks provided");
 		LambdaClient->InvokeAsync(InvokeRequest, Handler);
-		return true;
-}
+	}
 	LOG_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
 #endif
-	return false;
 }
 
 void UAWSLambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client, const Aws::Lambda::Model::InvokeRequest& Request, const Aws::Lambda::Model::InvokeOutcome& Outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& Context)

@@ -14,7 +14,7 @@ public class AWSLambda : ModuleRules
         PublicDefinitions.Add("USE_WINDOWS_DLL_SEMANTICS");
 
         // This is required to fix a warning for Unreal Engine 4.21 and later
-        PrivatePCHHeaderFile = "Private/LambdaPrivatePCH.h";
+        PrivatePCHHeaderFile = "Private/AWSLambdaModulwPrivatePCH.h";
 
         bEnableExceptions = true;
 
@@ -46,6 +46,16 @@ public class AWSLambda : ModuleRules
             else
             {
                 throw new BuildException("aws-cpp-sdk-lambda.dll not found. Expected in this location: " + AWSLambdaDLLFile);
+            }
+
+            string BinariesDirectory = System.IO.Path.Combine(BaseDirectory, "Binaries", Target.Platform.ToString());
+            if (!Directory.Exists(BinariesDirectory))
+            {
+                Directory.CreateDirectory(BinariesDirectory);
+            }
+            if (File.Exists(System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-lambda.dll")) == false)
+            {
+                File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-lambda.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-lambda.dll"));
             }
         }
         else

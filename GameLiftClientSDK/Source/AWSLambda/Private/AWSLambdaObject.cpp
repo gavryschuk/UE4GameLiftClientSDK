@@ -2,12 +2,15 @@
 
 #include "AWSLambdaObject.h"
 
+#if WITH_AWS_LAMBDA
+
 #include <aws/core/client/ClientConfiguration.h>
 #include <aws/core/auth/AWSCredentialsProvider.h>
 
 #include <aws/identity-management/auth/PersistentCognitoIdentityProvider.h>
 #include <aws/identity-management/auth/CognitoCachingCredentialsProvider.h>
 
+#endif
 void UAWSLambdaObject::Internal_InitLambdaWithIAMCredentials(const FString& AccessKey, const FString& Secret, const FString& Region)
 {
 #if WITH_AWS_LAMBDA

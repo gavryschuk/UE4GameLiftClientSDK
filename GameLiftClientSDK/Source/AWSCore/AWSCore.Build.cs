@@ -5,6 +5,7 @@ public class AWSCore : ModuleRules
 {
 	public AWSCore(ReadOnlyTargetRules Target ): base(Target)
 	{
+
         PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
 
@@ -13,7 +14,6 @@ public class AWSCore : ModuleRules
 
         PublicDefinitions.Add("USE_IMPORT_EXPORT");
         PublicDefinitions.Add("USE_WINDOWS_DLL_SEMANTICS");
-        
 
         // This is required to fix a warning for Unreal Engine 4.21 and later
         PrivatePCHHeaderFile = "Private/AWSCorePrivatePCH.h";

@@ -39,6 +39,11 @@
       "Name": "AWSLambda",
       "Type": "Runtime",
       "LoadingPhase": "PreDefault"
+    },
+    {
+      "Name": "AWSCloudWatch",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
     }
   ]
 }

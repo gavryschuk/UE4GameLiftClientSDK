@@ -67,6 +67,20 @@ public class AWSIdentityManagement : ModuleRules
 			{
 				throw new BuildException("aws-cpp-sdk-identity-management.dll not found. Expected in this location: " + AWSIdentityManagementDLLFile);
 			}
-		}
+
+            string BinariesDirectory = System.IO.Path.Combine(BaseDirectory, "Binaries", Target.Platform.ToString());
+            if (!Directory.Exists(BinariesDirectory))
+            {
+                Directory.CreateDirectory(BinariesDirectory);
+            }
+            if (File.Exists(System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-sts.dll")) == false)
+            {
+                File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-sts.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-sts.dll"));
+            }
+            if (File.Exists(System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-identity-management.dll")) == false)
+            {
+                File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-identity-management.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-identity-management.dll"));
+            }
+        }
 	}
 }
