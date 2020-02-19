@@ -11,7 +11,7 @@
 USTRUCT(Blueprintable, BlueprintType)
 struct FAWSCloudWatchCustomMetricsConfig
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(BlueprintReadWrite)
 	FString NameSpace;

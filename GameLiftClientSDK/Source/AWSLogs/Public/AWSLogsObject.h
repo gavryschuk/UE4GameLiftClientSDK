@@ -35,9 +35,11 @@ public:
 
 	/**
 	* public UAWSLogsObject::CreateLogsCustomEventObject
-	* Creates aCloud Watch Custom Metrics Object. To Send Custom Metrics
+	* Creates Cloud Custom Event Object. To Send Custom Metrics
+	* @param GroupName [const FString&] Group Name for the Log;
+	* @param StreamName [const FString&] Stream Name for the Log;
 	* @return [UAWSLogsCustomEventObject*] Returns UAWSLogsCustomEventObject*. Use this to Send Custom Logs.
 	**/
 	UFUNCTION(BlueprintCallable, Category = "Logs Client Custom Event Object")
-	UAWSLogsCustomEventObject* CreateLogsCustomEventObject();
+	UAWSLogsCustomEventObject* CreateLogsCustomEventObject(const FString& GroupName, const FString& StreamName);
 };

@@ -1,4 +1,4 @@
-# BRANCH Lambda
+<!-- # BRANCH Lambda
 
 Current branch has AWSLambda functionalty added to the plugin.
 As the highest priority this is needed to manage game sessions for GameLift Server through lambda for security reasons.
@@ -17,7 +17,7 @@ Blueprints examples:
 -  In the current example Lambda already searched for the active available game sessions (if there were none->created one). Generated Player session for that game session and returned a result. [Using previously parsed **ip adress** and **port** to connect to GameLift Server](https://monosnap.com/file/2BElF5XMNUEfkIwM0YWFK2WW23n2hx?idx=0&total=1064)
 
 
-To get general information how to setup plugin -> please, read further...
+To get general information how to setup plugin -> please, read further... -->
 
 
 # GameLift Client SDK for Unreal Engine 4

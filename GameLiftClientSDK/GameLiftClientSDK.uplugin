@@ -44,6 +44,11 @@
       "Name": "AWSCloudWatch",
       "Type": "Runtime",
       "LoadingPhase": "PreDefault"
+    },
+    {
+      "Name": "AWSLogs",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
     }
   ]
 }

@@ -30,10 +30,10 @@ UAWSLogsObject* UAWSLogsObject::CreateLogsObject(const FString& AccessKey, const
 	return nullptr;
 }
 
-UAWSLogsCustomEventObject*  UAWSLogsObject::CreateLogsCustomEventObject()
+UAWSLogsCustomEventObject*  UAWSLogsObject::CreateLogsCustomEventObject(const FString& GroupName, const FString& StreamName)
 {
 #if WITH_AWS_LOGS
-	UAWSLogsCustomEventObject* Proxy = UAWSLogsCustomEventObject::CreateLogsCustomEvent();
+	UAWSLogsCustomEventObject* Proxy = UAWSLogsCustomEventObject::CreateLogsCustomEvent(GroupName, StreamName);
 	Proxy->LogsClient = LogsClient;
 	return Proxy;
 #endif

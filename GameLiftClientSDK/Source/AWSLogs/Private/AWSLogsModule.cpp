@@ -9,7 +9,7 @@ void* FAWSLogsModule::AWSLogsLibraryHandle = nullptr;
 void FAWSLogsModule::StartupModule()
 {
 #if PLATFORM_WINDOWS && PLATFORM_64BITS
-	LOG_NORMAL("Starting Cloud Watch Module...");
+	LOG_NORMAL("Starting AWS Logs Module...");
 	const FString BaseDir = IPluginManager::Get().FindPlugin("GameLiftClientSDK")->GetBaseDir();
 	LOG_NORMAL(FString::Printf(TEXT("Base directory is %s"), *BaseDir));
 
