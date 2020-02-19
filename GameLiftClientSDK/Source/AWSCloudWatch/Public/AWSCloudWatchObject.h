@@ -10,48 +10,6 @@
 #endif
 #include "AWSCloudWatchObject.generated.h"
 
-USTRUCT(Blueprintable, BlueprintType)
-struct FAWSCloudWatchCustomMetricsConfig
-{
-	GENERATED_BODY()
-
-		UPROPERTY(BlueprintReadWrite)
-		FString NameSpace;
-
-	UPROPERTY(BlueprintReadWrite)
-		FString MetricsGroupName;
-
-	UPROPERTY(BlueprintReadWrite)
-		FString MetricKeyName;
-
-	UPROPERTY(BlueprintReadWrite)
-		FString MetricValueName;
-
-	UPROPERTY(BlueprintReadWrite)
-		double Value;
-
-	FAWSCloudWatchCustomMetricsConfig()
-	{
-		NameSpace = "UE4/GameLiftClientSDK";
-		MetricsGroupName = "MetricGroupName";
-		MetricKeyName = "MetricKeyName";
-		MetricValueName = "MetricValueName";
-		Value = 0.0;
-	}
-
-	FAWSCloudWatchCustomMetricsConfig(FString InitNameSpace, FString InitMetricsGroupName, FString InitMetricKeyName, FString InitMetricValueName, double InitValue)
-	{
-		NameSpace = InitNameSpace;
-		MetricsGroupName = InitMetricsGroupName;
-		MetricKeyName = InitMetricKeyName;
-		MetricValueName = InitMetricValueName;
-		Value = InitValue;
-	}
-};
-
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAWSCloudWatchCustomMetricsSuccess);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAWSCloudWatchCustomMetricsFailed, const FString&, ErrorMessage);
 UCLASS()
 class AWSCLOUDWATCH_API UAWSCloudWatchObject : public UObject
 {
@@ -76,11 +34,10 @@ public:
 
     
 	/**
-	* public ULambdaFunction::CreateLambdaFunction
-	* Creates a LambdaFunction Object. To Make Calls to AWS Lambda
-	* @param LambdaFunctionName [FString] Lambda Function Name from your AWS account.
-	* @return [ULambdaFunction*] Returns ULambdaFunction*. Use this to Call the function itself and manage response.
+	* public UAWSCloudWatchCustomMetricsObject::CreateCloudWatchCustomMetricsObject
+	* Creates aCloud Watch Custom Metrics Object. To Send Custom Metrics
+	* @return [UAWSCloudWatchCustomMetricsObject*] Returns UAWSCloudWatchCustomMetricsObject*. Use this to Send Custom Metrics and manage response.
 	**/
-	UFUNCTION(BlueprintCallable, Category = "Lambda Client Object")
+	UFUNCTION(BlueprintCallable, Category = "Cloud Watch Custom Metrics Object")
 	UAWSCloudWatchCustomMetricsObject* CreateCloudWatchCustomMetricsObject();
 };

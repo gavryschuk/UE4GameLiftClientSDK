@@ -31,7 +31,7 @@ void UAWSCloudWatchCustomMetricsObject::Call(const FAWSCloudWatchCustomMetricsCo
 		Aws::CloudWatch::Model::MetricDatum datum;
 		datum.SetMetricName(TCHAR_TO_UTF8(*CloudWatchCustomMetricsData.MetricValueName));
 		datum.SetUnit(Aws::CloudWatch::Model::StandardUnit::None);
-		datum.SetValue(CloudWatchCustomMetricsData.Value);
+		datum.SetValue(static_cast<double>(CloudWatchCustomMetricsData.Value));
 		datum.AddDimensions(dimension);
 
 		Aws::CloudWatch::Model::PutMetricDataRequest MetricDataRequest;

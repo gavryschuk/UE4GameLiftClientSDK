@@ -26,7 +26,7 @@ struct FAWSCloudWatchCustomMetricsConfig
 	FString MetricValueName;
 
 	UPROPERTY(BlueprintReadWrite)
-	double Value;
+	float Value;
 
 	FAWSCloudWatchCustomMetricsConfig()
 	{
@@ -37,7 +37,7 @@ struct FAWSCloudWatchCustomMetricsConfig
 		Value = 0.0;
 	}
 
-	FAWSCloudWatchCustomMetricsConfig(FString InitNameSpace, FString InitMetricsGroupName, FString InitMetricKeyName, FString InitMetricValueName, double InitValue)
+	FAWSCloudWatchCustomMetricsConfig(FString InitNameSpace, FString InitMetricsGroupName, FString InitMetricKeyName, FString InitMetricValueName, float InitValue)
 	{
 		NameSpace = InitNameSpace;
 		MetricsGroupName = InitMetricsGroupName;

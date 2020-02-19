@@ -29,3 +29,13 @@ UAWSCloudWatchObject* UAWSCloudWatchObject::CreateCloudWatchObject(const FString
 #endif
 	return nullptr;
 }
+
+UAWSCloudWatchCustomMetricsObject* UAWSCloudWatchObject::CreateCloudWatchCustomMetricsObject()
+ {
+ #if WITH_AWS_CLOUDWATCH
+	UAWSCloudWatchCustomMetricsObject* Proxy = UAWSCloudWatchCustomMetricsObject::CreateCloudWatchCustomMetrics();
+ 	Proxy->CloudWatchClient = CloudWatchClient;
+ 	return Proxy;
+ #endif
+ 	return nullptr;
+ }
