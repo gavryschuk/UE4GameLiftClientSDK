@@ -51,6 +51,8 @@ public:
 private:
 	Aws::Lambda::LambdaClient* LambdaClient;
 	FString LambdaFunctionName;
+	
+	bool bIsRunning = false;
 
 	static UAWSLambdaFunction* CreateLambdaFunction(FString LambdaFunctionName);
 public:

@@ -8,45 +8,6 @@
 #endif
 #include "AWSCloudWatchApi.generated.h"
 
-USTRUCT(Blueprintable, BlueprintType)
-struct FAWSCloudWatchCustomMetricsConfig
-{
-	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(BlueprintReadWrite)
-	FString NameSpace;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString MetricsGroupName;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString MetricKeyName;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString MetricValueName;
-
-	UPROPERTY(BlueprintReadWrite)
-	float Value;
-
-	FAWSCloudWatchCustomMetricsConfig()
-	{
-		NameSpace = "UE4/GameLiftClientSDK";
-		MetricsGroupName = "MetricGroupName";
-		MetricKeyName = "MetricKeyName";
-		MetricValueName = "MetricValueName";
-		Value = 0.0;
-	}
-
-	FAWSCloudWatchCustomMetricsConfig(FString InitNameSpace, FString InitMetricsGroupName, FString InitMetricKeyName, FString InitMetricValueName, float InitValue)
-	{
-		NameSpace = InitNameSpace;
-		MetricsGroupName = InitMetricsGroupName;
-		MetricKeyName = InitMetricKeyName;
-		MetricValueName = InitMetricValueName;
-		Value = InitValue;
-	}
-};
-
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAWSCloudWatchCustomMetricsSuccess);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAWSCloudWatchCustomMetricsFailed, const FString&, ErrorMessage);
 UCLASS()
@@ -62,12 +23,16 @@ public:
 	FOnAWSCloudWatchCustomMetricsFailed OnAWSCloudWatchCustomMetricsFailed;
 private:
 	Aws::CloudWatch::CloudWatchClient* CloudWatchClient;
+	FString NameSpace;
+	FString GroupName;
 
-	static UAWSCloudWatchCustomMetricsObject* CreateCloudWatchCustomMetrics();
+	bool bIsRunning = false;
+
+	static UAWSCloudWatchCustomMetricsObject* CreateCloudWatchCustomMetrics(const FString& NameSpace, const FString& GroupName);
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "Cloud Watch Custom Metrics")
-	void Call(const FAWSCloudWatchCustomMetricsConfig& CloudWatchCustomMetricsData );
+	void Call(const FString& KeyName, const FString& ValueName, const float Value );
 private:
 	void OnCustomMetricsCall(const Aws::CloudWatch::CloudWatchClient* Client, const Aws::CloudWatch::Model::PutMetricDataRequest& Request, const Aws::CloudWatch::Model::PutMetricDataOutcome& Outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& Context);
 };

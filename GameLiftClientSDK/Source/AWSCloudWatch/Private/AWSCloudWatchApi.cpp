@@ -9,39 +9,48 @@
 #include <aws/monitoring/model/PutMetricDataRequest.h>
 #endif
 
-UAWSCloudWatchCustomMetricsObject* UAWSCloudWatchCustomMetricsObject::CreateCloudWatchCustomMetrics()
+UAWSCloudWatchCustomMetricsObject* UAWSCloudWatchCustomMetricsObject::CreateCloudWatchCustomMetrics(const FString& NameSpace, const FString& GroupName)
 {
 #if WITH_AWS_CLOUDWATCH
-	return NewObject<UAWSCloudWatchCustomMetricsObject>();
+	UAWSCloudWatchCustomMetricsObject* Proxy = NewObject<UAWSCloudWatchCustomMetricsObject>();
+	Proxy->NameSpace = NameSpace;
+	Proxy->GroupName = GroupName;
+	return Proxy;
 #endif
 	return nullptr;
 }
 
-void UAWSCloudWatchCustomMetricsObject::Call(const FAWSCloudWatchCustomMetricsConfig& CloudWatchCustomMetricsData)
+void UAWSCloudWatchCustomMetricsObject::Call(const FString& KeyName, const FString& ValueName, const float Value)
 {
 #if WITH_AWS_CLOUDWATCH
+	// if the previous custom metrics log is in progress => quit
+	if (bIsRunning) {
+		LOG_NORMAL("Previous Custom Metrics call is in progress. Make next next call after responce is recieved");
+		return;
+	}
+
 	if (CloudWatchClient)
 	{
-		LOG_NORMAL("Preparing to send Cloud Watch Custom Metrics...");
+		bIsRunning = true;
 
 		Aws::CloudWatch::Model::Dimension dimension;
-		dimension.SetName(TCHAR_TO_UTF8(*CloudWatchCustomMetricsData.MetricsGroupName));
-		dimension.SetValue(TCHAR_TO_UTF8(*CloudWatchCustomMetricsData.MetricKeyName));
+		dimension.SetName(TCHAR_TO_UTF8(*GroupName));
+		dimension.SetValue(TCHAR_TO_UTF8(*KeyName));
 
 		Aws::CloudWatch::Model::MetricDatum datum;
-		datum.SetMetricName(TCHAR_TO_UTF8(*CloudWatchCustomMetricsData.MetricValueName));
+		datum.SetMetricName(TCHAR_TO_UTF8(*ValueName));
 		datum.SetUnit(Aws::CloudWatch::Model::StandardUnit::None);
-		datum.SetValue(static_cast<double>(CloudWatchCustomMetricsData.Value));
+		datum.SetValue(static_cast<double>(Value));
 		datum.AddDimensions(dimension);
 
 		Aws::CloudWatch::Model::PutMetricDataRequest MetricDataRequest;
-		MetricDataRequest.SetNamespace(TCHAR_TO_UTF8(*CloudWatchCustomMetricsData.NameSpace));
+		MetricDataRequest.SetNamespace(TCHAR_TO_UTF8(*NameSpace));
 		MetricDataRequest.AddMetricData(datum);
 		
 		// send data without callbacks
 		if (OnAWSCloudWatchCustomMetricsSuccess.IsBound() == false || OnAWSCloudWatchCustomMetricsFailed.IsBound() == false) {
-			LOG_NORMAL("At least one callback function is not provided. Cloud Watch sends Custom Metrics without callbacks...");
 			CloudWatchClient->PutMetricData(MetricDataRequest);
+			bIsRunning = false;
 			return;
 		}
 
@@ -49,7 +58,6 @@ void UAWSCloudWatchCustomMetricsObject::Call(const FAWSCloudWatchCustomMetricsCo
 		Aws::CloudWatch::PutMetricDataResponseReceivedHandler Handler;
 		Handler = std::bind(&UAWSCloudWatchCustomMetricsObject::OnCustomMetricsCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 
-		LOG_NORMAL("Cloud Watch sends Custom Metrics Async. Callbacks provided.");
 		CloudWatchClient->PutMetricDataAsync(MetricDataRequest, Handler);
 	}
 	LOG_ERROR("CloudWatchClient is null. Did you call CreateCloudWatchObject and CreateCloudWatchCustomMetricsObject first?");
@@ -67,8 +75,9 @@ void UAWSCloudWatchCustomMetricsObject::OnCustomMetricsCall(const Aws::CloudWatc
 	else
 	{
 		const FString MyErrorMessage = FString(Outcome.GetError().GetMessage().c_str());
-		LOG_ERROR("Received Cloud Watch OnCustomMetricsCall with failed outcome. Error: " + MyErrorMessage);
+		LOG_WARNING("Received Cloud Watch OnCustomMetricsCall with failed outcome. Error: " + MyErrorMessage);
 		OnAWSCloudWatchCustomMetricsFailed.Broadcast(MyErrorMessage);
 	}
+	bIsRunning = false;
 #endif
 }

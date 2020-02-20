@@ -39,5 +39,5 @@ public:
 	* @return [UAWSCloudWatchCustomMetricsObject*] Returns UAWSCloudWatchCustomMetricsObject*. Use this to Send Custom Metrics and manage response.
 	**/
 	UFUNCTION(BlueprintCallable, Category = "Cloud Watch Custom Metrics Object")
-	UAWSCloudWatchCustomMetricsObject* CreateCloudWatchCustomMetricsObject();
+	UAWSCloudWatchCustomMetricsObject* CreateCloudWatchCustomMetricsObject(const FString& NameSpace, const FString& GroupName);
 };

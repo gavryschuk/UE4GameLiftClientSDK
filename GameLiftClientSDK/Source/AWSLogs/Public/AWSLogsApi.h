@@ -6,39 +6,13 @@
 #include "Misc/DateTime.h"
 #if WITH_AWS_LOGS
 #include <aws/logs/CloudWatchLogsClient.h>
-#include <aws/logs/model/DescribeLogStreamsRequest.h>
-#include <aws/logs/model/DescribeLogStreamsResult.h>
 #include <aws/logs/model/InputLogEvent.h>
+#include <aws/logs/model/DescribeLogStreamsRequest.h>
 #include <aws/logs/model/CreateLogGroupRequest.h>
 #include <aws/logs/model/CreateLogStreamRequest.h>
 #include <aws/logs/model/PutLogEventsRequest.h>
-#include <aws/logs/model/PutLogEventsResult.h>
 #endif
 #include "AWSLogsApi.generated.h"
-
-USTRUCT(Blueprintable, BlueprintType)
-struct FAWSLogsMessageItem
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite)
-	FDateTime TimeStamp;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString Message;
-
-	FAWSLogsMessageItem()
-	{
-		TimeStamp = FDateTime::UtcNow();
-		Message = "EmptyMessage";
-	}
-
-	FAWSLogsMessageItem(FString InitMessage)
-	{
-		TimeStamp = FDateTime::UtcNow();
-		Message = InitMessage;
-	}
-};
 
 UCLASS()
 class AWSLOGS_API UAWSLogsCustomEventObject : public UObject
@@ -52,7 +26,7 @@ private:
 	FString StreamName;
 	
 	FString mSequenceToken;
-	TArray<FAWSLogsMessageItem> mMessageArray;
+	Aws::Vector<Aws::CloudWatchLogs::Model::InputLogEvent> mInputEvents;
 	
 	bool bIsGroupCreated = false;
 	bool bIsStreamCreated = false;
@@ -64,6 +38,8 @@ public:
 	void Call(const FString& Message);
 
 private:
+	void PutLogs();
+	void GetSequenceToken();
 	void RegisterGroup();
 	void RegisterStream();
 

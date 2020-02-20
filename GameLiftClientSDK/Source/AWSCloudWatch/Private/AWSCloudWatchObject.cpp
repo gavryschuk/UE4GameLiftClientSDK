@@ -30,10 +30,10 @@ UAWSCloudWatchObject* UAWSCloudWatchObject::CreateCloudWatchObject(const FString
 	return nullptr;
 }
 
-UAWSCloudWatchCustomMetricsObject* UAWSCloudWatchObject::CreateCloudWatchCustomMetricsObject()
+UAWSCloudWatchCustomMetricsObject* UAWSCloudWatchObject::CreateCloudWatchCustomMetricsObject(const FString& NameSpace, const FString& GroupName)
  {
  #if WITH_AWS_CLOUDWATCH
-	UAWSCloudWatchCustomMetricsObject* Proxy = UAWSCloudWatchCustomMetricsObject::CreateCloudWatchCustomMetrics();
+	UAWSCloudWatchCustomMetricsObject* Proxy = UAWSCloudWatchCustomMetricsObject::CreateCloudWatchCustomMetrics(NameSpace, GroupName);
  	Proxy->CloudWatchClient = CloudWatchClient;
  	return Proxy;
  #endif

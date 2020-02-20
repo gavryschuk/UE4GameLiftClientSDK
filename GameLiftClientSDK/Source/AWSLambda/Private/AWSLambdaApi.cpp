@@ -23,10 +23,14 @@ UAWSLambdaFunction* UAWSLambdaFunction::CreateLambdaFunction(FString LambdaFunct
 void UAWSLambdaFunction::Call(const TArray<FAWSLambdaParamsItem>& RequestParams)
 {
 #if WITH_AWS_LAMBDA
+	// if the previous Lambda call is in progress => quit
+	if (bIsRunning) {
+		LOG_NORMAL("Previous Lambda call is in progress. Make next next call after responce is recieved");
+		return;
+	}
+
 	if (LambdaClient && LambdaFunctionName.Len() > 0)
 	{
-		LOG_NORMAL("Preparing to request Lambda...");
-
 		Aws::Lambda::Model::InvokeRequest InvokeRequest;
 		InvokeRequest.SetFunctionName(TCHAR_TO_UTF8(*LambdaFunctionName));
 		InvokeRequest.SetInvocationType(Aws::Lambda::Model::InvocationType::RequestResponse);
@@ -49,15 +53,14 @@ void UAWSLambdaFunction::Call(const TArray<FAWSLambdaParamsItem>& RequestParams)
 
 		// send data without callbacks
 		if (OnAWSLambdaFunctionSuccess.IsBound() == false || OnAWSLambdaFunctionFailed.IsBound() == false) {
-			LOG_NORMAL("At least one callback function is not provided. Lambda calls without callbacks...");
 			LambdaClient->Invoke(InvokeRequest);
+			bIsRunning = false;
 			return;
 		}
 
 		Aws::Lambda::InvokeResponseReceivedHandler Handler;
 		Handler = std::bind(&UAWSLambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 
-		LOG_NORMAL("Lambda Async call. Callbacks provided");
 		LambdaClient->InvokeAsync(InvokeRequest, Handler);
 	}
 	LOG_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
@@ -70,16 +73,12 @@ void UAWSLambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client,
 	if (Outcome.IsSuccess())
 	{
 		LOG_NORMAL("Received OnFunctionCall with Success outcome.");
-
-		LOG_NORMAL("Parsing result....");
 		auto& Result = Outcome.GetResult();
 		
 		Aws::Utils::Json::JsonValue ResultPayload{ ((Aws::Lambda::Model::InvokeResult&)Result).GetPayload() };
 		auto JsonView = ResultPayload.View();
 
 		TArray<FAWSLambdaParamsItem> ResponseArray;
-
-		bool bIsError = false;
 
 		for (const auto& item : JsonView.GetAllObjects()) {
 			auto Key = FString(item.first.c_str());
@@ -105,5 +104,6 @@ void UAWSLambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client,
 		LOG_ERROR("Received Lambda OnFunctionCall with failed outcome. Error: " + MyErrorMessage);
 		OnAWSLambdaFunctionFailed.Broadcast(MyErrorMessage);
 	}
+	bIsRunning = false;
 #endif
 }
