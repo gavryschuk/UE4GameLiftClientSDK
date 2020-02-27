@@ -24,8 +24,6 @@ public class AWSLambda : ModuleRules
 
         if (bIsThirdPartyPathValid)
         {
-            if (Target.Type != TargetRules.TargetType.Server)
-            {
                 PublicLibraryPaths.Add(ThirdPartyPath);
 
                 string AWSLambdaLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-lambda.lib");
@@ -58,7 +56,6 @@ public class AWSLambda : ModuleRules
                 {
                     File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-lambda.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-lambda.dll"));
                 }
-            }
         }
 	}
 }

@@ -24,8 +24,6 @@ public class AWSCognitoIdentity : ModuleRules
 
 		if (bIsThirdPartyPathValid)
 		{
-            if (Target.Type != TargetRules.TargetType.Server)
-            {
                 PublicLibraryPaths.Add(ThirdPartyPath);
 
                 string AWSCognitoLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.lib");
@@ -58,7 +56,6 @@ public class AWSCognitoIdentity : ModuleRules
                 {
                     File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-cognito-identity.dll"));
                 }
-            }
         }
 	}
 }

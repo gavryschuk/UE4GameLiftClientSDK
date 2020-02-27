@@ -24,8 +24,6 @@ public class AWSIdentityManagement : ModuleRules
 
 		if (bIsThirdPartyPathValid)
 		{
-            if (Target.Type != TargetRules.TargetType.Server)
-            {
                 PublicLibraryPaths.Add(ThirdPartyPath);
 
                 string AWSstsLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-sts.lib");
@@ -83,7 +81,6 @@ public class AWSIdentityManagement : ModuleRules
                 {
                     File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-identity-management.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-identity-management.dll"));
                 }
-            }
         }
 	}
 }
