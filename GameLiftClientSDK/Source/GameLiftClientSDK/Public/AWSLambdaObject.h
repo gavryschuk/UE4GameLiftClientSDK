@@ -8,12 +8,12 @@
 #include "AWSLambdaObject.generated.h"
 
 UCLASS()
-class AWSLAMBDA_API UAWSLambdaObject : public UObject
+class GAMELIFTCLIENTSDK_API UAWSLambdaObject : public UObject
 {
 	GENERATED_BODY()
 
 private:
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	Aws::Lambda::LambdaClient* LambdaClient;
 #endif
 	void Internal_InitLambdaWithIAMCredentials(const FString& AccessKey, const FString& Secret, const FString& Region);

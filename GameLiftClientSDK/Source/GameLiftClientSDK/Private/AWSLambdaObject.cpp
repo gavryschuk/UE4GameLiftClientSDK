@@ -2,7 +2,7 @@
 
 #include "AWSLambdaObject.h"
 
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 
 #include <aws/core/client/ClientConfiguration.h>
 #include <aws/core/auth/AWSCredentialsProvider.h>
@@ -13,7 +13,7 @@
 #endif
 void UAWSLambdaObject::Internal_InitLambdaWithIAMCredentials(const FString& AccessKey, const FString& Secret, const FString& Region)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	Aws::Client::ClientConfiguration ClientConfig;
 	Aws::Auth::AWSCredentials Credentials;
 
@@ -28,7 +28,7 @@ void UAWSLambdaObject::Internal_InitLambdaWithIAMCredentials(const FString& Acce
 
 void UAWSLambdaObject::Internal_InitLambdaWithIdentityPool(const FString& AccountID, const FString& CognitoIdentityPoolId, const FString& Region)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	Aws::Client::ClientConfiguration ClientConfig;
 
 	ClientConfig.connectTimeoutMs = 10000;
@@ -42,7 +42,7 @@ void UAWSLambdaObject::Internal_InitLambdaWithIdentityPool(const FString& Accoun
 
 UAWSLambdaObject* UAWSLambdaObject::CreateLambdaObjectWithIAMCredentials(const FString& AccessKey, const FString& Secret, const FString& Region /*= "us-east-1"*/)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	UAWSLambdaObject* Proxy = NewObject<UAWSLambdaObject>();
 	Proxy->Internal_InitLambdaWithIAMCredentials(AccessKey, Secret, Region);
 	return Proxy;
@@ -52,7 +52,7 @@ UAWSLambdaObject* UAWSLambdaObject::CreateLambdaObjectWithIAMCredentials(const F
 
 UAWSLambdaObject* UAWSLambdaObject::CreateLambdaObjectWithIdentityPool(const FString& AccountID, const FString& CognitoIdentityPoolId, const FString& Region /*= "us-east-1"*/)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	UAWSLambdaObject* Proxy = NewObject<UAWSLambdaObject>();
 	Proxy->Internal_InitLambdaWithIdentityPool(AccountID, CognitoIdentityPoolId, Region);
 	return Proxy;
@@ -62,7 +62,7 @@ UAWSLambdaObject* UAWSLambdaObject::CreateLambdaObjectWithIdentityPool(const FSt
 
 UAWSLambdaFunction* UAWSLambdaObject::CreateLambdaFunction(FString LambdaFunctionName)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	UAWSLambdaFunction* Proxy = UAWSLambdaFunction::CreateLambdaFunction(LambdaFunctionName);
 	Proxy->LambdaClient = LambdaClient;
 	return Proxy;

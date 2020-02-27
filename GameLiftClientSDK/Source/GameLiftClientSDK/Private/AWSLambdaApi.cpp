@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AWSLambdaApi.h"
-#include "GameLiftClientSDK/Public/GameLiftClientGlobals.h"
+#include "GameLiftClientGlobals.h"
 
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 #include <aws/core/utils/Outcome.h>
 #include <aws/lambda/LambdaClient.h>
 #include <aws/lambda/model/InvokeRequest.h>
@@ -12,7 +12,7 @@
 
 UAWSLambdaFunction* UAWSLambdaFunction::CreateLambdaFunction(FString LambdaFunctionName)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	UAWSLambdaFunction* Proxy = NewObject<UAWSLambdaFunction>();
 	Proxy->LambdaFunctionName = LambdaFunctionName;
 	return Proxy;
@@ -22,7 +22,7 @@ UAWSLambdaFunction* UAWSLambdaFunction::CreateLambdaFunction(FString LambdaFunct
 
 void UAWSLambdaFunction::Call(const TArray<FAWSLambdaParamsItem>& RequestParams)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	// if the previous Lambda call is in progress => quit
 	if (bIsRunning) {
 		LOG_NORMAL("Previous Lambda call is in progress. Make next next call after responce is recieved");
@@ -62,6 +62,7 @@ void UAWSLambdaFunction::Call(const TArray<FAWSLambdaParamsItem>& RequestParams)
 		Handler = std::bind(&UAWSLambdaFunction::OnFunctionCall, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 
 		LambdaClient->InvokeAsync(InvokeRequest, Handler);
+		return;
 	}
 	LOG_ERROR("LambdaClient is null. Or no Lambda Function Name specified. Did you call CreateLambdaObject and CreateLambdaFunction first?");
 #endif
@@ -69,7 +70,7 @@ void UAWSLambdaFunction::Call(const TArray<FAWSLambdaParamsItem>& RequestParams)
 
 void UAWSLambdaFunction::OnFunctionCall(const Aws::Lambda::LambdaClient* Client, const Aws::Lambda::Model::InvokeRequest& Request, const Aws::Lambda::Model::InvokeOutcome& Outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& Context)
 {
-#if WITH_AWS_LAMBDA
+#if WITH_GAMELIFTCLIENTSDK
 	if (Outcome.IsSuccess())
 	{
 		LOG_NORMAL("Received OnFunctionCall with Success outcome.");

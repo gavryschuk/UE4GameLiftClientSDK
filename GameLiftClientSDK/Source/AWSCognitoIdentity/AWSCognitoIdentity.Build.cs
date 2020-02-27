@@ -24,37 +24,40 @@ public class AWSCognitoIdentity : ModuleRules
 
 		if (bIsThirdPartyPathValid)
 		{
-			PublicLibraryPaths.Add(ThirdPartyPath);
-
-			string AWSCognitoLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.lib");
-			if (File.Exists(AWSCognitoLibFile))
-			{
-				PublicAdditionalLibraries.Add(AWSCognitoLibFile);
-			}
-			else
-			{
-				throw new BuildException("aws-cpp-sdk-cognito-identity.lib not found. Expected in this location: " + AWSCognitoLibFile);
-			}
-
-			string AWSCognitoDLLFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.dll");
-			if (File.Exists(AWSCognitoDLLFile))
-			{
-                PublicDelayLoadDLLs.Add("aws-cpp-sdk-cognito-identity.dll");
-                RuntimeDependencies.Add(AWSCognitoDLLFile);
-            }
-			else
-			{
-				throw new BuildException("aws-cpp-sdk-cognito-identity.dll not found. Expected in this location: " + AWSCognitoDLLFile);
-			}
-
-            string BinariesDirectory = System.IO.Path.Combine(BaseDirectory, "Binaries", Target.Platform.ToString());
-            if (!Directory.Exists(BinariesDirectory))
+            if (Target.Type != TargetRules.TargetType.Server)
             {
-                Directory.CreateDirectory(BinariesDirectory);
-            }
-            if (File.Exists(System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-cognito-identity.dll")) == false)
-            {
-                File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-cognito-identity.dll"));
+                PublicLibraryPaths.Add(ThirdPartyPath);
+
+                string AWSCognitoLibFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.lib");
+                if (File.Exists(AWSCognitoLibFile))
+                {
+                    PublicAdditionalLibraries.Add(AWSCognitoLibFile);
+                }
+                else
+                {
+                    throw new BuildException("aws-cpp-sdk-cognito-identity.lib not found. Expected in this location: " + AWSCognitoLibFile);
+                }
+
+                string AWSCognitoDLLFile = System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.dll");
+                if (File.Exists(AWSCognitoDLLFile))
+                {
+                    PublicDelayLoadDLLs.Add("aws-cpp-sdk-cognito-identity.dll");
+                    RuntimeDependencies.Add(AWSCognitoDLLFile);
+                }
+                else
+                {
+                    throw new BuildException("aws-cpp-sdk-cognito-identity.dll not found. Expected in this location: " + AWSCognitoDLLFile);
+                }
+
+                string BinariesDirectory = System.IO.Path.Combine(BaseDirectory, "Binaries", Target.Platform.ToString());
+                if (!Directory.Exists(BinariesDirectory))
+                {
+                    Directory.CreateDirectory(BinariesDirectory);
+                }
+                if (File.Exists(System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-cognito-identity.dll")) == false)
+                {
+                    File.Copy(System.IO.Path.Combine(ThirdPartyPath, "aws-cpp-sdk-cognito-identity.dll"), System.IO.Path.Combine(BinariesDirectory, "aws-cpp-sdk-cognito-identity.dll"));
+                }
             }
         }
 	}
