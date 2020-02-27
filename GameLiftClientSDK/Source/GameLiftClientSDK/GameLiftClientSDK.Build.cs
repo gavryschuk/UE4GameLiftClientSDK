@@ -9,15 +9,15 @@ public class GameLiftClientSDK : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
-        PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
-
-        PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore","AWSCognitoIdentity","AWSIdentityManagement" });
-
         PublicDefinitions.Add("USE_IMPORT_EXPORT");
         PublicDefinitions.Add("USE_WINDOWS_DLL_SEMANTICS");
 
         bEnableExceptions = true;
+
+        PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
+        PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
+
+        PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "InputCore", "Projects", "AWSCore" });
 
         string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));
         string ThirdPartyPath = System.IO.Path.Combine(BaseDirectory, "ThirdParty", "GameLiftClientSDK", Target.Platform.ToString());

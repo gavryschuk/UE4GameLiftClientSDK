@@ -5,9 +5,6 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "AWSLambdaApi.h"
-#if WITH_AWS_LAMBDA
-#include <aws/lambda/LambdaClient.h>
-#endif
 #include "AWSLambdaObject.generated.h"
 
 UCLASS()
