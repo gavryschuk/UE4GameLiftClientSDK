@@ -13,7 +13,7 @@
 
 
 USTRUCT(Blueprintable, BlueprintType)
-struct FAWSLambdaParamsItem
+struct GAMELIFTCLIENTSDK_API FAWSLambdaParamsItem
 {
 	GENERATED_BODY()
 
