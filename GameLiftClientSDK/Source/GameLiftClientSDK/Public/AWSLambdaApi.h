@@ -15,8 +15,9 @@
 USTRUCT(Blueprintable, BlueprintType)
 struct GAMELIFTCLIENTSDK_API FAWSLambdaParamsItem
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
+public:
 	UPROPERTY(BlueprintReadWrite)
 	FString Key;
 

@@ -5,7 +5,6 @@
 
 #if WITH_GAMELIFTCLIENTSDK
 #include <aws/core/utils/Outcome.h>
-#include <aws/lambda/LambdaClient.h>
 #include <aws/lambda/model/InvokeRequest.h>
 #include <aws/lambda/model/InvokeResult.h>
 #endif
